@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./pages/Layout/Header";
+import Footer from "./pages/Layout/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Footer />
     </div>
   );
 }
 
 export default App;
+
+// Todo сделать карточку товара
+// Todo сделать блок сортировки
+// Todo сделать каталог слева
+// Todo сделать категории
+// Todo сделать пагинацию товаров
+// Todo сделать блок с рекомендациями
+// Todo сделать блок что можно добавить
