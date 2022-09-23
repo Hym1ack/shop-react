@@ -33,7 +33,7 @@ function Footer() {
             <div className={s.phone}>
               <p className={s.phoneNumber}>
                 <img className={s.phoneImg} src={phoneImg} alt="phone" />
-                <p>+7 (333) 33-33-33</p>
+                <span>+7 (333) 33-33-33</span>
               </p>
               <p className={s.phoneDescr}>Ежедневно c 09:00 до 21:00</p>
             </div>

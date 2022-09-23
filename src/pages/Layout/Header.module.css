@@ -101,6 +101,8 @@
     background: #FFF8EB;
     border: 1px solid rgba(255, 169, 0, 0.45);
     border-radius: 16px;
+
+    cursor: pointer;
 }
 
 .itemActive {
