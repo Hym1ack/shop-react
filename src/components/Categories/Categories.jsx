@@ -1,16 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
 import s from "./Categories.module.css";
-import { addCategory, clearCategories } from "../../redux/shopSlice";
-import {
-  selectAllCategories,
-  selectAllCategoriesActive,
-} from "../../redux/selectors";
 
-function Categories() {
-  const categories = useSelector(selectAllCategories);
-  const categoriesActive = useSelector(selectAllCategoriesActive);
-  const dispatch = useDispatch();
-
+function Categories({
+  addCategory,
+  clearCategories,
+  categories,
+  categoriesActive,
+  dispatch,
+}) {
   const categoryElements = categories.map((category, i) => (
     <option
       onClick={() => dispatch(addCategory(categories[i].key))}
