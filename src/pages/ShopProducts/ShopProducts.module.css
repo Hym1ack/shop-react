@@ -1,0 +1,36 @@
+.shop {
+    display: grid;
+    grid-template-columns: 315px 1fr;
+    grid-template-areas: 'title sort'
+                          'features categories'
+                           'catalog products';
+
+    position: relative;
+}
+
+.title {
+    grid-area: title;
+    width: 315px;
+}
+
+.sort {
+    grid-area: sort;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.features {
+    grid-area: features;
+    width: 315px;
+}
+
+
+.catalog {
+    grid-area: catalog;
+    width: 315px;
+}
+
+.products {
+    grid-area: products;
+}

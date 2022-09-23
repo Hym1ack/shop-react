@@ -1,16 +1,37 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import s from "./Product.module.css";
-import Product from "./Product";
-import { selectProductsByFilter } from "../../redux/selectors";
+import { linksCatalog } from "../../database/linksCatalog";
+import { fetchProducts } from "../../redux/shopSlice";
+import Products from "./Products";
+import CategoriesContainer from "../Categories/CategoriesContainer";
 
 function ProductContainer() {
-  const products = useSelector(selectProductsByFilter);
+  const dispatch = useDispatch();
+  const location = useLocation().pathname;
+  const { isLoading } = useSelector((state) => state.shop);
 
-  const productsElements = products.map((product) => (
-    <Product product={product} key={product.id} />
-  ));
+  const catalog = linksCatalog.reduce((acc, links) => {
+    let result = { ...acc };
+    links.items.forEach((link) => {
+      if (location.includes(link.to)) result = link;
+    });
+    return result;
+  }, {});
 
-  return <div className={s.products}>{productsElements}</div>;
+  useEffect(() => {
+    dispatch(fetchProducts(catalog.to));
+  }, [catalog.to, dispatch]);
+
+  return (
+    <>
+      <div className={s.categories}>
+        <CategoriesContainer />
+      </div>
+      <div className={s.products}>{!isLoading && <Products />}</div>
+    </>
+  );
 }
 
 export default ProductContainer;
