@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./Sort.module.css";
-import { setSort } from "../../redux/sortSlice";
+import { setSort } from "../../redux/shopSlice";
 
 const options = [
   { value: "rating", label: "По популярности" },
@@ -13,7 +13,7 @@ const options = [
 
 function Sort() {
   const dispatch = useDispatch();
-  const sortLabel = useSelector((state) => state.sort.sort.label);
+  const sortLabel = useSelector((state) => state.shop.sort.label);
   const [isOpen, setOpen] = useState(false);
   const refSort = useRef();
 

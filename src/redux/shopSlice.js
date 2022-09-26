@@ -17,6 +17,7 @@ export const shopSlice = createSlice({
   initialState: {
     isLoading: true,
     products: {},
+    sort: { value: "rating", label: "По популярности" },
   },
   reducers: {
     addCategory(state, action) {
@@ -32,6 +33,9 @@ export const shopSlice = createSlice({
     clearCategories(state) {
       state.products.activeCategories = [];
     },
+    setSort(state, action) {
+      state.sort = action.payload;
+    },
   },
   extraReducers: {
     [fetchProducts.fulfilled]: (state, action) => {
@@ -41,5 +45,5 @@ export const shopSlice = createSlice({
   },
 });
 
-export const { addCategory, clearCategories } = shopSlice.actions;
+export const { addCategory, clearCategories, setSort } = shopSlice.actions;
 export default shopSlice.reducer;

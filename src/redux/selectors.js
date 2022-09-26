@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 const allCategoriesActive = (state) => state.shop.products.activeCategories;
-const activeSort = (state) => state.sort.sort.value;
+const activeSort = (state) => state.shop.sort.value;
 
 const allProducts = (state) => state.shop.products.products;
 
