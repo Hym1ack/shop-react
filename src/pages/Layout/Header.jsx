@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import s from "./Header.module.css";
-import logo from "../../assets/images/logo.svg";
-import shoppingCart from "../../assets/images/shopping-cart.svg";
+import logo from "../../assets/images/header/logo.svg";
+import cartImage from "../../assets/images/header/shopping-cart.svg";
 
 function Header() {
   return (
@@ -65,10 +66,10 @@ function Header() {
                 />
               </svg>
             </button>
-            <button className={s.shopCart} type="button">
-              <img className={s.cartImage} src={shoppingCart} alt="cart" />
+            <Link to="cart" className={s.shopCart}>
+              <img src={cartImage} alt="cart" className={s.cartImage} />
               <span>Корзина</span>
-            </button>
+            </Link>
           </div>
         </div>
         <div>

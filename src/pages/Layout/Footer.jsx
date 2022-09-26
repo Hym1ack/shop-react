@@ -1,9 +1,9 @@
 import s from "./Footer.module.css";
-import cards from "../../assets/images/footerCards.png";
-import phoneImg from "../../assets/images/phone.svg";
-import locationImg from "../../assets/images/location-image.svg";
-import instImg from "../../assets/images/insta-logo.svg";
-import emailImg from "../../assets/images/email-logo.svg";
+import cards from "../../assets/images/footer/footerCards.png";
+import phoneImg from "../../assets/images/footer/phone.svg";
+import locationImg from "../../assets/images/footer/location-image.svg";
+import instImg from "../../assets/images/footer/insta-logo.svg";
+import emailImg from "../../assets/images/footer/email-logo.svg";
 
 function Footer() {
   return (
