@@ -22,17 +22,15 @@ function Categories({
   ));
 
   return (
-    <div className={s.categories}>
-      <optgroup className={s.categoriesList}>
-        {categoryElements}
-        <option
-          className={`${s.categoryClean} ${s.category}`}
-          onClick={() => dispatch(clearCategories())}
-        >
-          Очистить фильтр
-        </option>
-      </optgroup>
-    </div>
+    <optgroup className={s.categoriesList}>
+      {categoryElements}
+      <option
+        className={`${s.categoryClean} ${s.category}`}
+        onClick={() => dispatch(clearCategories())}
+      >
+        Очистить фильтр
+      </option>
+    </optgroup>
   );
 }
 

@@ -1,3 +1,7 @@
+.catalog {
+    margin-top: 18px;
+    width: 315px;
+}
 
 .title {
     margin-bottom: 5px;
@@ -16,15 +20,16 @@
 .links {
     display: flex;
     flex-direction: column;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
+
 }
 
 .link {
-    padding: 5px 25px;
+    padding: 12px 25px 1px;
 
     font-weight: 400;
     font-size: 20px;
-    line-height: 27px;
+    line-height: 16px;
     color: #000;
 }
 

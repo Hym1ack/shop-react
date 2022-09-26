@@ -18,7 +18,7 @@ function Catalog() {
   });
 
   return (
-    <div>
+    <div className={s.catalog}>
       <h5 className={s.title}>Каталог</h5>
       {linksElements}
     </div>
