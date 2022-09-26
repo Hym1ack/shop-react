@@ -1,36 +1,25 @@
 .shop {
-    display: grid;
-    grid-template-columns: 315px 1fr;
-    grid-template-areas: 'title sort'
-                          'features categories'
-                           'catalog products';
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+}
 
-    position: relative;
+.catalog {
+    width: 314px;
+}
+
+.topMain {
+    display: flex;
+    justify-content: space-between;
 }
 
 .title {
-    grid-area: title;
-    width: 315px;
+    margin-top: 11px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-transform: uppercase;
 }
 
-.sort {
-    grid-area: sort;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.features {
-    grid-area: features;
-    width: 315px;
-}
-
-
-.catalog {
-    grid-area: catalog;
-    width: 315px;
-}
-
-.products {
-    grid-area: products;
-}
