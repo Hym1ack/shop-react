@@ -3,23 +3,24 @@ import s from "./ShopProducts.module.css";
 import Sort from "../../components/Sort/Sort";
 import Catalog from "../../components/Catalog/Catalog";
 import ProductContainer from "../../components/Product/ProductContainer";
+import Features from "../../components/Features/Features";
 
 function ShopProducts() {
   const title = useSelector((state) => state.shop.products.title);
   return (
-    <div className={s.shop}>
-      <div className={s.title}>{title}</div>
-      <div className={s.features}>title</div>
-      <div className={s.catalog}>
-        <Catalog />
-      </div>
-      <div className={s.sort}>
+    <>
+      <div className={s.topMain}>
+        <h4 className={s.title}>{title || "Страница товаров"}</h4>
         <Sort />
       </div>
-      <div className={s.products}>
+      <div className={s.shop}>
+        <div className={s.catalog}>
+          <Features />
+          <Catalog />
+        </div>
         <ProductContainer />
       </div>
-    </div>
+    </>
   );
 }
 
