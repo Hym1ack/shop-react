@@ -25,12 +25,12 @@ function ProductContainer() {
   }, [catalog.to, dispatch]);
 
   return (
-    <>
+    <div className={s.productContainer}>
       <div className={s.categories}>
         <CategoriesContainer />
       </div>
-      <div className={s.products}>{!isLoading && <Products />}</div>
-    </>
+      {!isLoading && <Products />}
+    </div>
   );
 }
 

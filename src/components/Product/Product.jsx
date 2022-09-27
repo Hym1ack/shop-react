@@ -1,6 +1,6 @@
 import s from "./Product.module.css";
 
-function Product({ product }) {
+function Product({ product, dispatch, addToCart }) {
   const { image, availableCount, price, newPrice, productName, favorited } =
     product;
 
@@ -33,7 +33,11 @@ function Product({ product }) {
           <p className={s.price}>{newPrice || price} руб.</p>
           {newPrice && <p className={s.oldPrice}>{price} руб.</p>}
         </div>
-        <button className={s.buyBtn} type="button">
+        <button
+          className={s.buyBtn}
+          type="button"
+          onClick={() => dispatch(addToCart(product))}
+        >
           В корзину
         </button>
       </div>

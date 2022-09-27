@@ -1,15 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./Product.module.css";
 import Product from "./Product";
-import { selectProductsByFilter } from "../../redux/selectors";
+import { selectProductsByFilters } from "../../redux/selectors";
+import { addToCart } from "../../redux/cartSlice";
 
 function Products() {
-  const products = useSelector(selectProductsByFilter);
+  const dispatch = useDispatch();
+  const products = useSelector(selectProductsByFilters);
 
   return (
     <div className={s.products}>
       {products.map((product) => (
-        <Product product={product} key={product.id} />
+        <Product
+          dispatch={dispatch}
+          addToCart={addToCart}
+          product={product}
+          key={product.id}
+        />
       ))}
     </div>
   );

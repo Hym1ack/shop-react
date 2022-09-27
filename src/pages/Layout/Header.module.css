@@ -39,7 +39,7 @@
     position: absolute;
     right: 14px;
     top: 12px;
-    background: url(../../assets/images/search.svg) no-repeat;
+    background: url(../../assets/images/header/search.svg) no-repeat;
     width: 22px;
     height: 22px;
     pointer-events: none;
@@ -49,6 +49,10 @@
     width: 260px;
     display: flex;
     gap: 14px;
+}
+
+.btnImg {
+    cursor: pointer;
 }
 
 .btnImg rect, .btnImg path {
@@ -69,15 +73,34 @@
     height: 48px;
     background: #FF0000;
     border-radius: 16px;
+
+    transition: .3s ease;
+    cursor: pointer;
+
+    position: relative;
+
+}
+
+
+.shopCart:hover {
+    background-color: #ffb53e;
+
 }
 
 .cartImage {
     display: inline-block;
-    padding-top: 5px;
-    padding-right: 6px;
+    margin: 11px 13px 15px;
+    width: 26px;
+    height: 22px;
 }
 
 .shopCart span {
+    display: inline-flex;
+    position: absolute;
+    top: 15px;
+    right: 11px;
+
+
     color: #fff;
     font-weight: 700;
     font-size: 16px;

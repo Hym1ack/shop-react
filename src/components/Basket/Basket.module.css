@@ -1,0 +1,169 @@
+.title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-transform: uppercase;
+}
+
+.cart {
+    display: flex;
+}
+
+.containerCart {
+    width: 853px;
+}
+
+.cartTop {
+    margin-bottom: 38px;
+    width: inherit;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.removeItems {
+    height: 100%;
+
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: right;
+    color: #6B6B6B;
+
+    transition: .3s ease;
+}
+
+.removeItems:hover {
+    color: #000;
+}
+
+.cartItems {
+
+}
+
+
+/*styles for item*/
+.item {
+    display: flex;
+    gap: 10px;
+    height: 131px;
+    margin-bottom: 18px;
+}
+
+.itemImage {
+    width: 180px;
+    height: 130px;
+    object-fit: contain;
+
+    border: 1px solid #DADADA;
+    border-radius: 20px;
+    position: relative;
+}
+
+.saleImage {
+    position: absolute;
+}
+
+
+.product {
+    margin-left: 21px;
+}
+
+.productName {
+    width: 292px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.productCount {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #434343;
+}
+
+.priceBlock {
+    width: 140px;
+}
+
+.newPrice {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    color: #CF0000;
+}
+
+.oldPrice {
+    margin-left: 13px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration-line: line-through;
+    color: #434343;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.countItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    height: 42px;
+    width: 109px;
+    padding: 10px 16px 10px 18px;
+
+    background: #FFF8EB;
+    border: 1px solid #FFE7B9;
+    border-radius: 58px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFA900;
+}
+
+.deleteItem img {
+    width: 10px;
+    height: 12px;
+}
+
+.removeItem,
+.addItem {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFA900;
+}
+
+.favorited {
+}
+
+.total {
+    width: 170px;
+}
+
+.totalPrice {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    text-align: right;
+
+}
+
+.totalQuantity {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: right;
+}
+
