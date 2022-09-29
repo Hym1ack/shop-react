@@ -39,3 +39,29 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.carousel-custom-buttons {
+    float: right;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 80px;
+    height: 46px;
+    padding: 8px 9px;
+
+    background: #FFF8EB;
+    border: 1px solid #FFE7B9;
+    border-radius: 58px;
+}
+
+.carousel-custom-next,
+.carousel-custom-prev {
+    cursor: pointer;
+}
+
+.swiper-button-disabled svg circle {
+    fill: #FFE7B9;
+}
+
+.swiper-button-disabled svg path {
+    fill: #FFA900;
+}

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import firestoreDatabase from "../firebase";
 
 export const fetchProducts = createAsyncThunk(
@@ -7,8 +7,20 @@ export const fetchProducts = createAsyncThunk(
   async (category) => {
     const data = await doc(firestoreDatabase, "products", category);
     const docs = await getDoc(data);
-
     return docs.data();
+  }
+);
+
+export const fetchRecommendedProducts = createAsyncThunk(
+  "shop/fetchRecommended",
+  async () => {
+    const data = await collection(firestoreDatabase, "products");
+    const docs = await getDocs(data);
+    const allProducts = [];
+
+    docs.forEach((el) => allProducts.push(el.data().products));
+
+    return allProducts.flat().filter((product) => product.rating > 5);
   }
 );
 
@@ -17,6 +29,7 @@ export const shopSlice = createSlice({
   initialState: {
     isLoading: true,
     products: {},
+    recommendedProducts: [],
     sort: { value: "rating", label: "По популярности" },
   },
   reducers: {
@@ -41,6 +54,9 @@ export const shopSlice = createSlice({
     [fetchProducts.fulfilled]: (state, action) => {
       state.products = action.payload;
       state.isLoading = false;
+    },
+    [fetchRecommendedProducts.fulfilled]: (state, action) => {
+      state.recommendedProducts = action.payload;
     },
   },
 });
