@@ -1,17 +1,52 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import s from "./Delivery.module.css";
+import { setNewPrice } from "../../redux/cartSlice";
 
 function Delivery() {
-  const { totalQuantity, totalAmount } = useSelector((state) => state.cart);
-  const [bonuses] = useState(300);
+  const dispatch = useDispatch();
+
+  const { totalQuantity, totalAmount, totalWeight, totalDiscount } =
+    useSelector((state) => state.cart);
+
+  const [checked, setChecked] = useState(false);
+  const [bonuses, setBonuses] = useState(300);
+  const availableBonuses = (bonuses * 0.03).toFixed();
+
+  const applyBonuses = () => {
+    let newPrice;
+    if (checked) {
+      setBonuses(bonuses + Number(availableBonuses));
+      newPrice = totalAmount + Number(availableBonuses);
+    } else {
+      setBonuses(bonuses - Number(availableBonuses));
+      newPrice = totalAmount - Number(availableBonuses);
+    }
+    dispatch(setNewPrice(newPrice));
+    setChecked(!checked);
+  };
 
   const infoBlock = [
-    { title: `Товары (${totalQuantity})`, info: "2.443 кг.", sale: false },
-    { title: `Скидки`, info: "104 руб.", sale: true },
-    { title: `Бонусы`, info: "17 руб.", sale: true },
-    { title: `Промокод`, info: "0 руб.", sale: false },
-    { title: `Доставка`, info: "Бесплатно", sale: false },
+    {
+      title: `Товары (${totalQuantity})`,
+      text: `${totalWeight}`,
+      sale: false,
+      unit: "кг.",
+    },
+    {
+      title: `Скидки`,
+      text: `${totalDiscount}`,
+      sale: true,
+      unit: "руб.",
+    },
+    {
+      title: `Бонусы`,
+      text: `${checked ? availableBonuses : 0}`,
+      sale: true,
+      unit: "руб.",
+    },
+    { title: `Промокод`, text: "0", sale: false, unit: "руб." },
+    { title: `Доставка`, text: "Бесплатно", sale: false, unit: "" },
   ];
 
   return (
@@ -36,13 +71,18 @@ function Delivery() {
         </button>
       </div>
       <div className={s.bonus}>
-        <input type="checkbox" id="applyBonuses" className={s.bonusInput} />
+        <input
+          type="checkbox"
+          id="applyBonuses"
+          className={s.bonusInput}
+          checked={checked}
+          onChange={applyBonuses}
+        />
         <label className={s.bonusLabel} htmlFor="applyBonuses">
           Списать бонусы
           <span className={s.count}>Всего {bonuses} бонусов</span>
           <p className={s.available}>
-            Доступно к списанию <span>{(bonuses * 0.03).toFixed()}</span>{" "}
-            бонусов
+            Доступно к списанию <span>{availableBonuses}</span> бонусов
           </p>
         </label>
       </div>
@@ -51,10 +91,13 @@ function Delivery() {
         {infoBlock.map((info) => (
           <div className={s.info} key={info.title}>
             <p className={s.infoText}>{info.title}</p>
+
             {info.sale ? (
-              <p className={s.infoSale}>-{info.info}</p>
+              <p className={s.infoSale}>
+                {info.text !== "0" ? `-${info.text}` : info.text} {info.unit}
+              </p>
             ) : (
-              <p className={s.infoText}>{info.info}</p>
+              <p className={s.infoText}>{`${info.text} ${info.unit}`}</p>
             )}
           </div>
         ))}

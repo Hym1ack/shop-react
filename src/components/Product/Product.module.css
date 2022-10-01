@@ -95,6 +95,10 @@
     color: #434343;
 }
 
+.sale {
+    color: #CF0000;
+}
+
 .buyBtn {
     padding: 9px 15px 11px 15px;
     height: 42px;

@@ -2,16 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 import s from "./Basket.module.css";
 import saleIcon from "../../assets/images/cart/saleIcon.svg";
 import deleteIcon from "../../assets/images/cart/deleteItem.svg";
+import timeIcon from "../../assets/images/cart/time.svg";
 import { addItem, clearCart, removeItem } from "../../redux/cartSlice";
 
 function Basket() {
   const cartProducts = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
 
+  const nightTime = new Date().getHours() >= 22 || new Date().getHours() <= 7;
+
   const cartElements = cartProducts.map((product) => (
     <div className={s.item} key={product.id}>
       <img src={product.image} alt="productImage" className={s.itemImage} />
-      {product.newPrice && (
+      {product.oldPrice && (
         <img src={saleIcon} alt="%" className={s.saleImage} />
       )}
       <div className={s.product}>
@@ -19,10 +22,10 @@ function Basket() {
         <p className={s.productCount}>В наличии {product.availableCount} шт.</p>
       </div>
       <div className={s.priceBlock}>
-        {product.newPrice ? (
+        {product.oldPrice ? (
           <>
-            <p className={s.newPrice}>{product.newPrice} руб.</p>
-            <p className={s.oldPrice}>{product.price} руб.</p>
+            <p className={s.newPrice}>{product.price} руб.</p>
+            <p className={s.oldPrice}>{product.oldPrice} руб.</p>
           </>
         ) : (
           <p className={s.price}>{product.price} руб.</p>
@@ -35,12 +38,12 @@ function Basket() {
           className={s.deleteItem}
         >
           {product.quantity === 1 ? (
-            <img src={deleteIcon} alt="del" />
+            <img src={deleteIcon} alt="del" className={s.removeItem} />
           ) : (
             <p className={s.removeItem}>-</p>
           )}
         </button>
-        {product.quantity}
+        <span>{product.quantity}</span>
         <button
           type="button"
           disabled={product.availableCount === product.quantity}
@@ -90,7 +93,14 @@ function Basket() {
           Очистить
         </button>
       </div>
-      <div className={s.cartItems}>{cartElements}</div>
+      {nightTime && (
+        <div className={s.nightOrder}>
+          <img src={timeIcon} alt="Time" />
+          <span>Мы принимаем заказы с 7:00 до 22:00</span>
+        </div>
+      )}
+
+      {cartElements}
     </div>
   );
 }

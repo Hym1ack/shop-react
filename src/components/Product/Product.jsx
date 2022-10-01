@@ -8,6 +8,8 @@ function Product({ product, dispatch, addToCart }) {
     ? `${s.productLike} ${s.productLikeActive}`
     : s.productLike;
 
+  const classesSale = newPrice ? `${s.sale} ${s.price}` : s.price;
+
   return (
     <div className={s.product}>
       <img className={s.productImage} src={image} alt="product" />
@@ -30,7 +32,7 @@ function Product({ product, dispatch, addToCart }) {
       </div>
       <div className={s.buy}>
         <div>
-          <p className={s.price}>{newPrice || price} руб.</p>
+          <p className={classesSale}>{newPrice || price} руб.</p>
           {newPrice && <p className={s.oldPrice}>{price} руб.</p>}
         </div>
         <button

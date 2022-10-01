@@ -54,6 +54,7 @@ function Recommendation() {
       <Swiper
         spaceBetween={27}
         slidesPerView={4}
+        loop
         navigation={{
           nextEl: `.carousel-custom-next`,
           prevEl: `.carousel-custom-prev`,
