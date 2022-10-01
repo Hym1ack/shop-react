@@ -56,12 +56,30 @@ code {
 .carousel-custom-next,
 .carousel-custom-prev {
     cursor: pointer;
+
 }
 
-.swiper-button-disabled svg circle {
-    fill: #FFE7B9;
+.carousel-custom-next svg path,
+.carousel-custom-prev svg path {
+    fill: #FFA900;
+    transition: .3s ease;
 }
 
-.swiper-button-disabled svg path {
+.carousel-custom-next svg circle,
+.carousel-custom-prev svg circle {
+    fill: #FFF8EB;
+    transition: .3s ease;
+}
+
+.carousel-custom-next:hover svg path,
+.carousel-custom-prev:hover svg path {
+    fill: #FFF8EB;
+}
+
+
+.carousel-custom-next:hover svg circle,
+.carousel-custom-prev:hover svg circle {
     fill: #FFA900;
 }
+
+
