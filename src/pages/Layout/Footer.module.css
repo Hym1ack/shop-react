@@ -1,7 +1,10 @@
 .footer {
+    margin-top: 60px;
+    flex-shrink: 0;
     width: 100vw;
     background-color: #D90000;
     color: #fff;
+
 }
 
 .information {

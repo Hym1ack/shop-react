@@ -4,6 +4,7 @@ import Layout from "./pages/Layout/Layout";
 import ProductContainer from "./components/Product/ProductContainer";
 import { linksCatalog } from "./database/linksCatalog";
 import CartPage from "./pages/Cart/CartPage";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   const routesProducts = linksCatalog.map((obj) =>
@@ -19,6 +20,8 @@ function App() {
           {routesProducts}
         </Route>
         <Route path="cart" element={<CartPage />} />
+
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
@@ -27,5 +30,4 @@ function App() {
 export default App;
 
 // Todo сделать пагинацию товаров
-// Todo сделать блок с рекомендациями
 // Todo сделать блок что можно добавить

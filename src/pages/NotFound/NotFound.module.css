@@ -1,0 +1,56 @@
+.notFound {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.descr {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: #6B6B6B;
+}
+
+.image {
+    position: relative;
+}
+
+.image:before {
+    content: 'ошибка';
+
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 98px;
+    color: #BEBEBE;
+}
+
+.error {
+    display: inline-flex;
+
+    font-weight: 700;
+    font-size: 240px;
+    line-height: 328px;
+
+    color: #BEBEBE;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 52px;
+    padding: 14px 24px 12px;
+
+    border: 1px solid #FF0000;
+    border-radius: 31px;
+
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FF0000;
+
+    transition: .3s ease;
+}
+
+.link:hover {
+    opacity: 0.7;
+}
