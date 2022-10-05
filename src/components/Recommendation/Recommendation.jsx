@@ -19,8 +19,8 @@ function Recommendation() {
   return (
     <div className={s.block}>
       <h6 className={s.title}>Рекомендации для вас</h6>
-      <div className="carousel-custom-buttons">
-        <button type="button" className="carousel-custom-prev">
+      <div className="carousel-recommendation-buttons">
+        <button type="button" className="carousel-recommendation-prev">
           <svg
             width="29"
             height="29"
@@ -35,7 +35,7 @@ function Recommendation() {
             />
           </svg>
         </button>
-        <button type="button" className="carousel-custom-next">
+        <button type="button" className="carousel-recommendation-next">
           <svg
             width="29"
             height="29"
@@ -56,8 +56,8 @@ function Recommendation() {
         slidesPerView={4}
         loop
         navigation={{
-          nextEl: `.carousel-custom-next`,
-          prevEl: `.carousel-custom-prev`,
+          nextEl: `.carousel-recommendation-next`,
+          prevEl: `.carousel-recommendation-prev`,
         }}
         modules={[Navigation]}
       >

@@ -8,7 +8,9 @@ function Header() {
     <header className={s.header}>
       <div className="container">
         <div className={s.headerTop}>
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
           <fieldset className={s.searchBlock}>
             <input className={s.search} placeholder="Начать поиск" />
             <span className={s.iconSearch} />

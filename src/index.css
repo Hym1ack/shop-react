@@ -50,46 +50,4 @@ code {
     monospace;
 }
 
-.carousel-custom-buttons {
-    float: right;
-    display: inline-flex;
-    justify-content: space-between;
-    width: 80px;
-    height: 46px;
-    padding: 8px 9px;
-
-    background: #FFF8EB;
-    border: 1px solid #FFE7B9;
-    border-radius: 58px;
-}
-
-.carousel-custom-next,
-.carousel-custom-prev {
-    cursor: pointer;
-
-}
-
-.carousel-custom-next svg path,
-.carousel-custom-prev svg path {
-    fill: #FFA900;
-    transition: .3s ease;
-}
-
-.carousel-custom-next svg circle,
-.carousel-custom-prev svg circle {
-    fill: #FFF8EB;
-    transition: .3s ease;
-}
-
-.carousel-custom-next:hover svg path,
-.carousel-custom-prev:hover svg path {
-    fill: #FFF8EB;
-}
-
-
-.carousel-custom-next:hover svg circle,
-.carousel-custom-prev:hover svg circle {
-    fill: #FFA900;
-}
-
 

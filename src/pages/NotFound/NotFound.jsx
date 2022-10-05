@@ -15,7 +15,7 @@ function NotFound() {
         существует. Возможно она устарела, была удалена, или был введен неверный
         адрес в адресной строке.
       </p>
-      <Link to="/shop/bakery" className={s.link}>
+      <Link to="/" className={s.link}>
         Перейти на главную
       </Link>
     </div>

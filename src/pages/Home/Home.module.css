@@ -1,0 +1,50 @@
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    display: flex;
+    gap: 24px;
+}
+
+.slider {
+    width: 862px;
+
+    position: relative;
+}
+
+.buttonsRight {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.sliderTitle {
+    padding-top: 113px;
+    padding-left: 52px;
+    margin-bottom: 34px;
+    width: 530px;
+
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+
+.buttonLink {
+    margin-left: 52px;
+    padding: 13px 28px;
+
+    border: 2px solid #FFFFFF;
+    border-radius: 31px;
+
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.sliderContainer {
+    position: relative;
+}

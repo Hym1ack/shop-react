@@ -1,0 +1,98 @@
+.carousel-recommendation-buttons {
+    float: right;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 80px;
+    height: 46px;
+    padding: 8px 9px;
+
+    background: #FFF8EB;
+    border: 1px solid #FFE7B9;
+    border-radius: 58px;
+}
+
+.carousel-recommendation-next,
+.carousel-recommendation-prev {
+    cursor: pointer;
+
+}
+
+.carousel-recommendation-next svg path,
+.carousel-recommendation-prev svg path {
+    fill: #FFA900;
+    transition: .3s ease;
+}
+
+.carousel-recommendation-next svg circle,
+.carousel-recommendation-prev svg circle {
+    fill: #FFF8EB;
+    transition: .3s ease;
+}
+
+.carousel-recommendation-next:hover svg path,
+.carousel-recommendation-prev:hover svg path {
+    fill: #FFF8EB;
+
+}
+
+
+.carousel-recommendation-next:hover svg circle,
+.carousel-recommendation-prev:hover svg circle {
+    fill: #FFA900;
+}
+
+.carousel-home-next,
+.carousel-home-prev {
+    position: absolute;
+    top: 44%;
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-home-prev {
+    right: auto;
+    left: -25px;
+}
+
+.carousel-home-next {
+    right: -25px;
+    left: auto;
+}
+
+.carousel-home-next path,
+.carousel-home-prev path {
+    transition: .3s;
+}
+
+.carousel-home-next:hover path,
+.carousel-home-prev:hover path {
+    stroke: #434343;
+
+}
+
+.carousel-pagination {
+    z-index: 10;
+    position: absolute;
+    bottom: 24px !important;
+    left: 52px !important;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 43px;
+
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    width: 32px;
+    height: 10px;
+
+    background: #FFFFFF;
+    border-radius: 43px;
+}

@@ -5,6 +5,7 @@ import ProductContainer from "./components/Product/ProductContainer";
 import { linksCatalog } from "./database/linksCatalog";
 import CartPage from "./pages/Cart/CartPage";
 import NotFound from "./pages/NotFound/NotFound";
+import Home from "./pages/Home/Home";
 
 function App() {
   const routesProducts = linksCatalog.map((obj) =>
@@ -16,6 +17,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
         <Route path="shop" element={<ShopProducts />}>
           {routesProducts}
         </Route>
