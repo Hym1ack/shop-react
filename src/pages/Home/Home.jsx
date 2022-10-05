@@ -16,6 +16,8 @@ import "swiper/css/navigation";
 
 import s from "./Home.module.css";
 import "../../utils/mySwiper.css";
+import Recommendation from "../../components/Recommendation/Recommendation";
+import { linksCatalog } from "../../database/linksCatalog";
 
 function Home() {
   const slides = [
@@ -26,6 +28,9 @@ function Home() {
     { title: "Заморозка", to: "shop/water" },
     { title: "Супермаркет", to: "shop/dumplings" },
   ];
+
+  const orderLinks = linksCatalog.slice();
+  [orderLinks[0], orderLinks[1]] = [orderLinks[1], orderLinks[0]];
 
   return (
     <div className={s.home}>
@@ -105,6 +110,32 @@ function Home() {
           <img src={cashbackImg} alt="" />
           <img src={reviewImg} alt="" />
         </div>
+      </div>
+      <div className={s.sales}>
+        <Recommendation title="Скидки" titleStyle={{ marginBottom: "34px" }} />
+      </div>
+      <div className={s.categories}>
+        {orderLinks.map((obj) => (
+          <div key={obj.title}>
+            <h4 className={s.itemTitle}>{obj.title}</h4>
+            <div className={s.items}>
+              {obj.items.map((item) => (
+                <Link
+                  className={s.link}
+                  style={{
+                    backgroundColor: obj.backgroundColor,
+                    borderColor: obj.borderColor,
+                  }}
+                  to={`shop/${item.to}`}
+                  key={item.label}
+                >
+                  <h5 className={s.text}>{item.label}</h5>
+                  <img className={s.image} src={item.image} alt="" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
