@@ -8,7 +8,10 @@ const allProducts = (state) => state.shop.products.products;
 export const selectProductsByFilters = createSelector(
   [allProducts, allCategoriesActive, activeSort],
   (products, activeCategories, sort) => {
-    const sortedProducts = JSON.parse(JSON.stringify(products));
+    const sortedProducts = products.slice();
+
+    const lowerProduct = (letter) => letter.productName.toLowerCase();
+
     switch (sort) {
       case "rating":
         sortedProducts.sort((a, b) => a.rating - b.rating);
@@ -23,11 +26,19 @@ export const selectProductsByFilters = createSelector(
         break;
 
       case "alphabetUp":
-        sortedProducts.sort((a, b) => (a.productName > b.productName ? 1 : -1));
+        sortedProducts.sort((a, b) => {
+          if (a === b) return 0;
+
+          return lowerProduct(a) >= lowerProduct(b) ? 1 : -1;
+        });
         break;
 
       case "alphabetDown":
-        sortedProducts.sort((a, b) => (a.productName < b.productName ? 1 : -1));
+        sortedProducts.sort((a, b) => {
+          if (a === b) return 0;
+
+          return lowerProduct(a) <= lowerProduct(b) ? 1 : -1;
+        });
         break;
 
       default: {
