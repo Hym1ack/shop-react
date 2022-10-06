@@ -1,3 +1,29 @@
+.sliderType1 {
+    width: 100%;
+}
+
+.sliderType2 {
+    width: 862px;
+    position: relative;
+}
+
+
+.sliderContainer {
+    margin-bottom: 83px;
+
+    position: relative;
+
+}
+
+.title {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
 .carousel-recommendation-buttons {
     float: right;
     display: inline-flex;
@@ -41,8 +67,8 @@
     fill: #FFA900;
 }
 
-.carousel-home-next,
-.carousel-home-prev {
+.carousel-prev,
+.carousel-next {
     position: absolute;
     top: 44%;
     z-index: 10;
@@ -52,23 +78,23 @@
     justify-content: center;
 }
 
-.carousel-home-prev {
+.carousel-prev {
     right: auto;
     left: -25px;
 }
 
-.carousel-home-next {
+.carousel-next {
     right: -25px;
     left: auto;
 }
 
-.carousel-home-next path,
-.carousel-home-prev path {
+.carousel-next path,
+.carousel-prev path {
     transition: .3s;
 }
 
-.carousel-home-next:hover path,
-.carousel-home-prev:hover path {
+.carousel-next:hover path,
+.carousel-prev:hover path {
     stroke: #434343;
 
 }

@@ -5,14 +5,10 @@
 
 .top {
     display: flex;
+    justify-content: space-between;
     gap: 24px;
 }
 
-.slider {
-    width: 862px;
-
-    position: relative;
-}
 
 .buttonsRight {
     display: flex;
@@ -45,18 +41,11 @@
     line-height: 30px;
 }
 
-.sliderContainer {
-    position: relative;
-}
 
 .sales {
     margin-top: 114px;
 }
 
-
-.categories {
-    margin-top: 70px;
-}
 
 .itemTitle {
     margin-top: 130px;
@@ -72,7 +61,7 @@
 .items {
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 28px;
 }
 
 .link {
@@ -95,7 +84,7 @@
 .text {
     width: 225px;
 
-    margin-top: 47px;
+    margin-top: 35px;
     margin-left: 39px;
 
     font-weight: 600;
@@ -109,4 +98,83 @@
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+.banner {
+    padding: 30px;
+    height: 449px;
+}
+
+.bannerText {
+    user-select: none;
+    margin-left: 6px;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 35px;
+    color: #FFFFFF;
+}
+
+.bannerCoupon {
+    display: inline-block;
+    margin-top: 9px;
+    margin-left: 4px;
+
+    background: #FFFFFF;
+    border-radius: 39px;
+    padding: 9px 10px 9px 18px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+
+.deliveryWrapper {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 46px;
+}
+
+
+.deliveryTitle {
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+}
+
+.deliveryTitleText {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    color: #FF0000;
+}
+
+.deliveryDescr {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.deliveryText {
+    width: 630px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+
+.deliveryMap {
+    width: 633px;
+}
+
+
+.mapTitle {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    color: #FF0000;
 }
