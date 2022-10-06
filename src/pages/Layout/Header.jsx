@@ -3,6 +3,10 @@ import s from "./Header.module.css";
 import logo from "../../assets/images/header/logo.svg";
 import cartImage from "../../assets/images/header/shopping-cart.svg";
 
+import cookingImage from "../../assets/images/header/header-cooking.png";
+import shopsImage from "../../assets/images/header/header-shops.png";
+import stockImage from "../../assets/images/header/header-stock.png";
+
 function Header() {
   return (
     <header className={s.header}>
@@ -76,9 +80,24 @@ function Header() {
         </div>
         <div>
           <ul className={s.list}>
-            <li className={s.item}>Акции</li>
-            <li className={`${s.item} ${s.itemActive}`}>Кулинария</li>
-            <li className={s.item}>Магазины</li>
+            <li className={s.item}>
+              <Link to="/">
+                <img src={stockImage} alt="" />
+                <span className={s.itemText}>Домашняя</span>
+              </Link>
+            </li>
+            <li className={s.item}>
+              <Link to="shop/bakery">
+                <img src={shopsImage} alt="" />
+                <span className={s.itemText}>Супермаркет</span>
+              </Link>
+            </li>
+            <li className={s.item}>
+              <Link to="cart">
+                <img src={cookingImage} alt="" />
+                <span className={s.itemText}>Корзина</span>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

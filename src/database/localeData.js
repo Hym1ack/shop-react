@@ -24,7 +24,12 @@ import various1 from "../assets/images/main/various1.png";
 import various2 from "../assets/images/main/various2.png";
 import various3 from "../assets/images/main/various3.png";
 
-export const linksCatalog = [
+import banner1 from "../assets/images/main/banner1.png";
+import banner2 from "../assets/images/main/banner2.png";
+import banner3 from "../assets/images/main/banner3.png";
+import banner4 from "../assets/images/main/banner4.png";
+
+export const localeData = [
   {
     title: "Кулинария",
     items: [
@@ -78,5 +83,38 @@ export const linksCatalog = [
     ],
     backgroundColor: "#EBFDFF",
     borderColor: "#A3D0D6",
+  },
+];
+
+export const slidesHome = [
+  {
+    title: "Начните день с вкусной выпечки из нашей кулинарии",
+    to: "shop/bakery",
+  },
+  { title: "Заморозка", to: "shop/water" },
+  { title: "Супермаркет", to: "shop/dumplings" },
+];
+
+export const banners = [
+  {
+    title: "Сделай предзаказ в кулинарии со скидкой",
+    coupon: null,
+    bgImage: banner1,
+  },
+  {
+    title: "Праздник к нам приходит",
+    coupon: "15% скидка",
+    bgImage: banner2,
+  },
+  {
+    title: "Скидка на третий товар в корзине «Чистая линия»",
+    coupon: null,
+    bgImage: banner3,
+  },
+  {
+    title: "Комбо-набор 3 пиццы за 1500 Р",
+    coupon: "trio1500",
+    promo: "trio1500",
+    bgImage: banner4,
   },
 ];

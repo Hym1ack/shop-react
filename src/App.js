@@ -2,13 +2,13 @@ import { Route, Routes } from "react-router-dom";
 import ShopProducts from "./pages/ShopProducts/ShopProducts";
 import Layout from "./pages/Layout/Layout";
 import ProductContainer from "./components/Product/ProductContainer";
-import { linksCatalog } from "./database/linksCatalog";
+import { localeData } from "./database/localeData";
 import CartPage from "./pages/Cart/CartPage";
 import NotFound from "./pages/NotFound/NotFound";
 import Home from "./pages/Home/Home";
 
 function App() {
-  const routesProducts = linksCatalog.map((obj) =>
+  const routesProducts = localeData.map((obj) =>
     obj.items.map((link) => (
       <Route path={link.to} element={<ProductContainer />} />
     ))

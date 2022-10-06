@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import s from "./Product.module.css";
-import { linksCatalog } from "../../database/linksCatalog";
+import { localeData } from "../../database/localeData";
 import { fetchProducts } from "../../redux/shopSlice";
 import Products from "./Products";
 import CategoriesContainer from "../Categories/CategoriesContainer";
@@ -12,7 +12,7 @@ function ProductContainer() {
   const location = useLocation().pathname;
   const { isLoading } = useSelector((state) => state.shop);
 
-  const catalog = linksCatalog.reduce((acc, links) => {
+  const catalog = localeData.reduce((acc, links) => {
     let result = { ...acc };
     links.items.forEach((link) => {
       if (location.includes(link.to)) result = link;
