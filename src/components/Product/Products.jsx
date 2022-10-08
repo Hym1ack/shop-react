@@ -7,9 +7,9 @@ import { addToCart } from "../../redux/cartSlice";
 function Products() {
   const dispatch = useDispatch();
   const products = useSelector(selectProductsByFilters);
-
   return (
     <div className={s.products}>
+      {products.length === 0 && <p>Товаров не найдено</p>}
       {products.map((product) => (
         <Product
           dispatch={dispatch}

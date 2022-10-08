@@ -6,11 +6,12 @@ import ProductContainer from "../../components/Product/ProductContainer";
 import Features from "../../components/Features/Features";
 
 function ShopProducts() {
-  const title = useSelector((state) => state.shop.products.title);
+  const title =
+    useSelector((state) => state.shop.products?.title) || "Страница товаров";
   return (
     <>
       <div className={s.topMain}>
-        <h4 className={s.title}>{title || "Страница товаров"}</h4>
+        <h4 className={s.title}>{title}</h4>
         <Sort />
       </div>
       <div className={s.shop}>
