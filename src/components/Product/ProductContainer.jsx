@@ -4,13 +4,13 @@ import { useLocation } from "react-router-dom";
 import s from "./Product.module.css";
 import { localeData } from "../../database/localeData";
 import { fetchProducts } from "../../redux/shopSlice";
-import Products from "./Products";
 import CategoriesContainer from "../Categories/CategoriesContainer";
+import Products from "./Products";
 
 function ProductContainer() {
   const dispatch = useDispatch();
   const location = useLocation().pathname;
-  const { isLoading } = useSelector((state) => state.shop);
+  const { isLoading, products } = useSelector((state) => state.shop);
 
   const catalog = localeData.reduce((acc, links) => {
     let result = { ...acc };
@@ -26,10 +26,16 @@ function ProductContainer() {
 
   return (
     <div className={s.productContainer}>
-      <div className={s.categories}>
-        <CategoriesContainer />
-      </div>
-      {!isLoading && <Products />}
+      {products === undefined ? (
+        <p>В этой категории нет товаров.</p>
+      ) : (
+        <>
+          <div className={s.categories}>
+            <CategoriesContainer />
+          </div>
+          {!isLoading && <Products />}
+        </>
+      )}
     </div>
   );
 }
