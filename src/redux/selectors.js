@@ -18,11 +18,19 @@ export const selectProductsByFilters = createSelector(
         break;
 
       case "priceUp":
-        sortedProducts.sort((a, b) => a.price - b.price);
+        sortedProducts.sort(
+          (a, b) =>
+            (a.newPrice ? a.newPrice : a.price) -
+            (b.newPrice ? b.newPrice : b.price)
+        );
         break;
 
       case "priceDown":
-        sortedProducts.sort((a, b) => b.price - a.price);
+        sortedProducts.sort(
+          (a, b) =>
+            (b.newPrice ? b.newPrice : b.price) -
+            (a.newPrice ? a.newPrice : a.price)
+        );
         break;
 
       case "alphabetUp":
