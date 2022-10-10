@@ -111,6 +111,15 @@
 .cartNotEmpty {
     display: inline-block;
     margin-left: 7px;
+
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.cartQuantity {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .list {

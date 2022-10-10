@@ -93,7 +93,11 @@ function Header() {
                 <p className={s.cartNotEmpty}>
                   {`${totalAmount} ₽`}
                   <br />
-                  {`${totalQuantity} ${calcQuantityEnding(totalQuantity)}`}
+                  <span
+                    className={s.cartQuantity}
+                  >{`${totalQuantity} ${calcQuantityEnding(
+                    totalQuantity
+                  )}`}</span>
                 </p>
               )}
             </Link>
