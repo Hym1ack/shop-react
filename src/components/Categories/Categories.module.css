@@ -36,9 +36,9 @@
 .categoryActive:after {
     content: '';
     position: absolute;
-    background: url("../../assets/images/x.svg");
-    right: 6px;
-    top: 9px;
+    background: url("../../assets/images/categoriesX.svg");
+    right: 7px;
+    top: 11px;
     width: 15px;
     height: 15px;
 }
