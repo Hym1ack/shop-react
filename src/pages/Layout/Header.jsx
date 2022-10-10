@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import s from "./Header.module.css";
 import logo from "../../assets/images/header/logo.svg";
 import cartImage from "../../assets/images/header/shopping-cart.svg";
@@ -8,6 +9,17 @@ import shopsImage from "../../assets/images/header/header-shops.png";
 import stockImage from "../../assets/images/header/header-stock.png";
 
 function Header() {
+  const { totalAmount, totalQuantity } = useSelector((state) => state.cart);
+
+  const calcQuantityEnding = (quantity) => {
+    const ending = ["товар", "товара", "товаров"];
+
+    if (quantity === 1) return ending[0];
+    if (quantity > 1 && quantity < 5) return ending[1];
+
+    return ending[2];
+  };
+
   return (
     <header className={s.header}>
       <div className="container">
@@ -72,9 +84,18 @@ function Header() {
                 />
               </svg>
             </button>
+
             <Link to="cart" className={s.shopCart}>
               <img src={cartImage} alt="cart" className={s.cartImage} />
-              <span>Корзина</span>
+              {totalQuantity === 0 ? (
+                <span className={s.cartDefault}>Корзина</span>
+              ) : (
+                <p className={s.cartNotEmpty}>
+                  {`${totalAmount} ₽`}
+                  <br />
+                  {`${totalQuantity} ${calcQuantityEnding(totalQuantity)}`}
+                </p>
+              )}
             </Link>
           </div>
         </div>

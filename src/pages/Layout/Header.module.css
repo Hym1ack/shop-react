@@ -46,7 +46,7 @@
 }
 
 .headerRight {
-    width: 260px;
+    width: 300px;
     display: flex;
     gap: 14px;
 }
@@ -69,8 +69,13 @@
 }
 
 .shopCart {
-    width: 130px;
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 11px 6px 13px;
+    min-width: 130px;
     height: 48px;
+
     background: #FF0000;
     border-radius: 16px;
 
@@ -78,28 +83,24 @@
     cursor: pointer;
 
     position: relative;
-
 }
 
 
 .shopCart:hover {
     background-color: #ffb53e;
-
 }
 
 .cartImage {
     display: inline-block;
-    margin: 11px 13px 15px;
     width: 26px;
     height: 22px;
 }
 
-.shopCart span {
+.cartDefault {
     display: inline-flex;
     position: absolute;
     top: 15px;
     right: 11px;
-
 
     color: #fff;
     font-weight: 700;
@@ -107,13 +108,16 @@
     line-height: 22px;
 }
 
+.cartNotEmpty {
+    display: inline-block;
+    margin-left: 7px;
+}
+
 .list {
     display: flex;
     gap: 14px;
 
-
     cursor: pointer;
-
 }
 
 
@@ -144,6 +148,5 @@
 
 
 .itemActive {
-
     background: #FFE8BC;
 }
