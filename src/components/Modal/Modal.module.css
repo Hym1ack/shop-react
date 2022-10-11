@@ -25,13 +25,12 @@
     background-color: rgba(0, 0, 0, 0.5);
 
     opacity: 0;
-    transition: .5s;
+    animation: show .3s 1;
+    animation-fill-mode: forwards;
+    transition: .3s;
     cursor: pointer;
 }
 
-.active > .modalOverlay {
-    opacity: 1;
-}
 
 .modal {
     position: relative;
@@ -50,4 +49,14 @@
     top: 10px;
 
     cursor: pointer;
+}
+
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
