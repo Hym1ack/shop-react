@@ -1,0 +1,131 @@
+.block {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    padding: 33px 66px 80px 63px;
+
+    width: 100%;
+    height: 164px;
+
+    background: #FFECCA;
+    border: 1px solid #FFE7B9;
+    border-radius: 16px;
+}
+
+
+.title {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 52px;
+    text-transform: uppercase;
+    color: #2E0505;
+}
+
+.descr {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #2E0505;
+}
+
+.choose {
+    margin-top: 12px;
+}
+
+.form {
+    display: flex;
+    gap: 42px;
+}
+
+.radio {
+    height: 27px;
+}
+
+.chooseRadio {
+    display: none;
+}
+
+.chooseRadio + .chooseLabel {
+    display: inline-flex;
+    position: relative;
+
+    padding-left: 25px;
+
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+
+}
+
+.chooseRadio + .chooseLabel:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 17px;
+    height: 17px;
+    background: rgba(255, 169, 0, 0.35);
+    border: 1px solid #dddddd;
+    border-radius: 100%;
+}
+
+.chooseRadio + .chooseLabel:after {
+    content: "";
+    position: absolute;
+
+    left: 5px;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    background-color: #FF0000;
+
+    transition: all 0.2s ease;
+}
+
+
+.chooseRadio + .chooseLabel:after {
+    opacity: 0;
+}
+
+.chooseRadio:checked + .chooseLabel:after {
+    opacity: 1;
+}
+
+.sendButton {
+    margin-top: 15px;
+    padding: 13px 30px 13px 36px;
+
+    border: 2px solid #FF0000;
+    border-radius: 31px;
+
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    color: #FF0000;
+
+    transition: .3s;
+}
+
+.sendButton:hover {
+    background-color: #FF0000;
+    color: #fff;
+}
+
+.inputLink {
+    width: 381px;
+    padding: 5px 20px 4px;
+
+    background: #FFFFFF;
+    border: 1px solid #FFE7B9;
+    border-radius: 16px;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #C4B4B4;
+}
