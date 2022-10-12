@@ -9,8 +9,10 @@ import deliveryMap from "../../assets/images/main/deliveryMap.png";
 import s from "./Home.module.css";
 import Slider from "../../components/Slider/Slider";
 import { banners, localeData, slidesHome } from "../../database/localeData";
-import Product from "../../components/Product/Product";
+import ProductCard from "../../components/Product/ProductCard/ProductCard";
 import { addToCart } from "../../redux/cartSlice";
+import Promo from "../../components/Promo/Promo";
+import Rating from "../../components/Rating/Rating";
 
 function Home() {
   const elements = useSelector((state) => state.shop.recommendedProducts);
@@ -53,7 +55,7 @@ function Home() {
         >
           {elements.map((product) => (
             <SwiperSlide key={product.id}>
-              <Product
+              <ProductCard
                 product={product}
                 dispatch={dispatch}
                 addToCart={addToCart}
@@ -154,6 +156,14 @@ function Home() {
             <img src={deliveryMap} alt="map" />
           </div>
         </div>
+      </div>
+
+      <div className={s.promoBlock}>
+        <Promo />
+      </div>
+
+      <div className={s.ratingBlock}>
+        <Rating />
       </div>
     </div>
   );
