@@ -1,0 +1,54 @@
+.promo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 164px;
+
+    padding: 40px 55px 40px 63px;
+
+    background: radial-gradient(68.58% 1403.4% at 73.62% -94.51%, #FF1F00 0%, #FF7715 100%);
+    border-radius: 44px;
+}
+
+.text {
+    display: inline-flex;
+}
+
+.textTitle {
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 52px;
+    color: #FFFFFF;
+
+    position: relative;
+}
+
+
+.textTitle:first-child:after {
+    content: '+';
+    padding-left: 15px;
+    margin-right: 15px;
+}
+
+.bottomText {
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.button {
+    padding: 13px 32px 13px 28px;
+
+    border: 2px solid #FFFFFF;
+    border-radius: 31px;
+
+    cursor: pointer;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+}
