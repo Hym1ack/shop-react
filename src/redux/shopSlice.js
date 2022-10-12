@@ -7,7 +7,23 @@ export const fetchProducts = createAsyncThunk(
   async (category) => {
     const data = await doc(firestoreDatabase, "products", category);
     const docs = await getDoc(data);
+
     return docs.data();
+  }
+);
+
+export const fetchProductById = createAsyncThunk(
+  "shop/fetchProductById",
+  async (id) => {
+    const data = await collection(firestoreDatabase, "products");
+    const docs = await getDocs(data);
+    const allProducts = [];
+
+    docs.forEach((el) => allProducts.push(el.data().products));
+
+    return allProducts
+      .flat()
+      .find((product) => (product.id === Number(id) ? product : null));
   }
 );
 
@@ -20,7 +36,7 @@ export const fetchRecommendedProducts = createAsyncThunk(
 
     docs.forEach((el) => allProducts.push(el.data().products));
 
-    return allProducts.flat().filter((product) => product.rating > 5);
+    return allProducts.flat().filter((product) => product.rating > 8);
   }
 );
 
@@ -28,7 +44,7 @@ export const shopSlice = createSlice({
   name: "shop",
   initialState: {
     isLoading: true,
-    products: {},
+    products: [],
     recommendedProducts: [],
     sort: { value: "rating", label: "По популярности" },
   },
@@ -57,6 +73,15 @@ export const shopSlice = createSlice({
     },
     [fetchRecommendedProducts.fulfilled]: (state, action) => {
       state.recommendedProducts = action.payload;
+    },
+    [fetchProductById.fulfilled]: (state, action) => {
+      const isUniq = state.products.includes(
+        (product) => product.id === action.payload.id
+      );
+
+      if (!isUniq) {
+        state.products.push(action.payload);
+      }
     },
   },
 });
