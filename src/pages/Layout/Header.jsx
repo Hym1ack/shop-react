@@ -4,9 +4,12 @@ import s from "./Header.module.css";
 import logo from "../../assets/images/header/logo.svg";
 import cartImage from "../../assets/images/header/shopping-cart.svg";
 
+import marketImage from "../../assets/images/header/header-supermarket.png";
 import cookingImage from "../../assets/images/header/header-cooking.png";
-import shopsImage from "../../assets/images/header/header-shops.png";
+import freezeImage from "../../assets/images/header/header-freezen.png";
+import anotherImage from "../../assets/images/header/header-another.png";
 import stockImage from "../../assets/images/header/header-stock.png";
+import shopsImage from "../../assets/images/header/header-shops.png";
 
 function Header() {
   const { totalAmount, totalQuantity } = useSelector((state) => state.cart);
@@ -19,6 +22,15 @@ function Header() {
 
     return ending[2];
   };
+
+  const links = [
+    { to: "shop/water", label: "Супермаркет", image: marketImage },
+    { to: "shop/bakery", label: "Кулинария", image: cookingImage },
+    { to: "shop/dumplings", label: "Заморозка", image: freezeImage },
+    { to: "shop/beauty", label: "Другое", image: anotherImage },
+    { to: "discounts", label: "Акции", image: stockImage },
+    { to: "address", label: "Магазины", image: shopsImage },
+  ];
 
   return (
     <header className={s.header}>
@@ -105,24 +117,14 @@ function Header() {
         </div>
         <div>
           <ul className={s.list}>
-            <li className={s.item}>
-              <Link to="/">
-                <img src={stockImage} alt="" />
-                <span className={s.itemText}>Домашняя</span>
-              </Link>
-            </li>
-            <li className={s.item}>
-              <Link to="shop/bakery">
-                <img src={shopsImage} alt="" />
-                <span className={s.itemText}>Супермаркет</span>
-              </Link>
-            </li>
-            <li className={s.item}>
-              <Link to="cart">
-                <img src={cookingImage} alt="" />
-                <span className={s.itemText}>Корзина</span>
-              </Link>
-            </li>
+            {links.map((link) => (
+              <li className={s.item} key={link.to}>
+                <Link to={link.to}>
+                  <img src={link.image} alt="%" />
+                  <span className={s.itemText}>{link.label}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
