@@ -9,6 +9,20 @@
     width: 314px;
 }
 
+.productContainer {
+    width: 962px;
+    display: flex;
+    flex-direction: column;
+}
+
+.categories {
+    display: block;
+    width: 100%;
+    margin-top: 7px;
+    margin-bottom: 28px;
+}
+
+
 .topMain {
     display: flex;
     justify-content: space-between;
