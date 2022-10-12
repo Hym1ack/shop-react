@@ -147,7 +147,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import s from "./Slider.css";
 
-import Product from "../Product/Product";
+import ProductCard from "../ProductCard/ProductCard";
 import { addToCart } from "../../redux/cartSlice";
 
 function Slider({ title, titleStyle }) {
@@ -203,7 +203,7 @@ function Slider({ title, titleStyle }) {
       >
         {recProducts.map((product) => (
           <SwiperSlide key={product.id}>
-            <Product
+            <ProductCard
               product={product}
               dispatch={dispatch}
               addToCart={addToCart}
