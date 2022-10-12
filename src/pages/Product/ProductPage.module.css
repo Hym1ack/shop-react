@@ -1,0 +1,11 @@
+.productContainer {
+    display: flex;
+    gap: 74px;
+
+    margin-bottom: 188px;
+}
+
+.newGoods {
+    margin-top: 137px;
+    margin-bottom: 120px;
+}
