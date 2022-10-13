@@ -18,7 +18,7 @@ function NewGoods() {
       <div className={s.choose}>
         <form className={s.form}>
           {formElements.map((el) => (
-            <div className={s.radio}>
+            <div className={s.radio} key={el.value}>
               <input
                 type="radio"
                 name="formNewGoods"

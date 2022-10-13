@@ -5,12 +5,9 @@ import { addCategory, clearCategories } from "../../redux/shopSlice";
 
 function CategoriesContainer() {
   const dispatch = useDispatch();
-  const { products, isLoading } = useSelector((state) => state.shop);
-  const { categories, activeCategories } = products;
-
-  if (isLoading) {
-    return <div>Loading</div>;
-  }
+  const { categories, activeCategories } = useSelector(
+    (state) => state.shop.products
+  );
 
   return (
     <Categories

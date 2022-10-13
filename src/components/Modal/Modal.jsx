@@ -21,13 +21,7 @@ function Modal({ children, open, onClose }) {
 
   return createPortal(
     <div className={s.modalContainer}>
-      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label,jsx-a11y/click-events-have-key-events */}
-      <div
-        className={s.modalOverlay}
-        role="button"
-        tabIndex={0}
-        onClick={onClose}
-      />
+      <input className={s.modalOverlay} onClick={onClose} />
 
       <div className={s.modal}>
         <button className={s.modalClose} type="button" onClick={onClose}>
