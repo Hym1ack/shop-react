@@ -7,7 +7,10 @@ const fetchAllProducts = async () => {
   const docs = await getDocs(data);
   const allProducts = [];
 
-  docs.forEach((el) => allProducts.push(el.data().products));
+  docs.forEach((el) => {
+    if (el.data().products === undefined) return null;
+    return allProducts.push(el.data().products);
+  });
 
   return allProducts.flat();
 };
