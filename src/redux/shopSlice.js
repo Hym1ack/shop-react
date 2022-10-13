@@ -2,6 +2,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import firestoreDatabase from "../firebase";
 
+const fetchAllProducts = async () => {
+  const data = await collection(firestoreDatabase, "products");
+  const docs = await getDocs(data);
+  const allProducts = [];
+
+  docs.forEach((el) => allProducts.push(el.data().products));
+
+  return allProducts.flat();
+};
+
 export const fetchProducts = createAsyncThunk(
   "shop/fetchProducts",
   async (category) => {
@@ -15,28 +25,20 @@ export const fetchProducts = createAsyncThunk(
 export const fetchProductById = createAsyncThunk(
   "shop/fetchProductById",
   async (id) => {
-    const data = await collection(firestoreDatabase, "products");
-    const docs = await getDocs(data);
-    const allProducts = [];
+    const products = await fetchAllProducts();
 
-    docs.forEach((el) => allProducts.push(el.data().products));
-
-    return allProducts
-      .flat()
-      .find((product) => (product.id === Number(id) ? product : null));
+    return products.find((product) =>
+      product.id === Number(id) ? product : null
+    );
   }
 );
 
 export const fetchRecommendedProducts = createAsyncThunk(
   "shop/fetchRecommended",
   async () => {
-    const data = await collection(firestoreDatabase, "products");
-    const docs = await getDocs(data);
-    const allProducts = [];
+    const products = await fetchAllProducts();
 
-    docs.forEach((el) => allProducts.push(el.data().products));
-
-    return allProducts.flat().filter((product) => product.rating > 8);
+    return products.filter((product) => product.rating > 8);
   }
 );
 
