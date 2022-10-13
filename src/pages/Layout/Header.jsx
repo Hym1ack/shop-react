@@ -3,13 +3,7 @@ import { useSelector } from "react-redux";
 import s from "./Header.module.css";
 import logo from "../../assets/images/header/logo.svg";
 import cartImage from "../../assets/images/header/shopping-cart.svg";
-
-import marketImage from "../../assets/images/header/header-supermarket.png";
-import cookingImage from "../../assets/images/header/header-cooking.png";
-import freezeImage from "../../assets/images/header/header-freezen.png";
-import anotherImage from "../../assets/images/header/header-another.png";
-import stockImage from "../../assets/images/header/header-stock.png";
-import shopsImage from "../../assets/images/header/header-shops.png";
+import Navigation from "../../components/Navigation/Navigation";
 
 function Header() {
   const { totalAmount, totalQuantity } = useSelector((state) => state.cart);
@@ -22,15 +16,6 @@ function Header() {
 
     return ending[2];
   };
-
-  const links = [
-    { to: "shop/water", label: "Супермаркет", image: marketImage },
-    { to: "shop/bakery", label: "Кулинария", image: cookingImage },
-    { to: "shop/dumplings", label: "Заморозка", image: freezeImage },
-    { to: "shop/beauty", label: "Другое", image: anotherImage },
-    { to: "discounts", label: "Акции", image: stockImage },
-    { to: "address", label: "Магазины", image: shopsImage },
-  ];
 
   return (
     <header className={s.header}>
@@ -116,16 +101,7 @@ function Header() {
           </div>
         </div>
         <div>
-          <ul className={s.list}>
-            {links.map((link) => (
-              <li className={s.item} key={link.to}>
-                <Link to={link.to}>
-                  <img src={link.image} alt="%" />
-                  <span className={s.itemText}>{link.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Navigation />
         </div>
       </div>
     </header>
