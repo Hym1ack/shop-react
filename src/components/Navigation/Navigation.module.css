@@ -1,0 +1,39 @@
+.list {
+    display: flex;
+    gap: 14px;
+
+    cursor: pointer;
+}
+
+
+.item {
+    display: flex;
+    align-items: center;
+
+    height: 48px;
+    padding: 11px 15px 11px 14px;
+
+    background: #FFF8EB;
+    border: 1px solid rgba(255, 169, 0, 0.45);
+    border-radius: 16px;
+
+    line-height: 32px;
+}
+
+.item img {
+    vertical-align: middle;
+
+}
+
+.itemText {
+    padding-left: 7px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #0A0A0A;
+}
+
+
+.itemActive {
+    background: #FFE8BC;
+}
