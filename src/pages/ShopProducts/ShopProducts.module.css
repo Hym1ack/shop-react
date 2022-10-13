@@ -1,3 +1,18 @@
+
+.topMain {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    margin-top: 11px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-transform: uppercase;
+}
+
 .shop {
     width: 100%;
     display: flex;
@@ -22,18 +37,9 @@
     margin-bottom: 28px;
 }
 
-
-.topMain {
+.products {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    grid-gap: 25px;
 }
-
-.title {
-    margin-top: 11px;
-    margin-bottom: 40px;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 44px;
-    text-transform: uppercase;
-}
-

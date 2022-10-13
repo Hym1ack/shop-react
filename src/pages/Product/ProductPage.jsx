@@ -24,7 +24,7 @@ function ProductPage() {
     if (!location.state || !product) {
       dispatch(fetchProductById(id));
     }
-  }, [product, id]);
+  }, [product, id, location.state, dispatch]);
 
   if (!product) {
     return <p>Загрузка страницы</p>;
