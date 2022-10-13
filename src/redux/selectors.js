@@ -8,6 +8,10 @@ const allProducts = (state) => state.shop.products.products;
 export const selectProductsByFilters = createSelector(
   [allProducts, allCategoriesActive, activeSort],
   (products, activeCategories, sort) => {
+    if (products === undefined) {
+      return [];
+    }
+
     const sortedProducts = products.slice();
 
     const lowerProduct = (letter) => letter.productName.toLowerCase();

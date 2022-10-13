@@ -9,6 +9,13 @@ function CategoriesContainer() {
     (state) => state.shop.products
   );
 
+  if (!categories) {
+    return (
+      <p style={{ fontSize: 36, color: "#ff0000" }}>
+        В выбранной категории нету товаров
+      </p>
+    );
+  }
   return (
     <Categories
       categories={categories}
