@@ -1,0 +1,36 @@
+.username {
+    margin-bottom: 13px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+}
+
+.link {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.red {
+    color: #FF0000;
+}
+
+.gray {
+    color: #868686;
+}
+
+.logout {
+    margin-top: 4px;
+
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #868686;
+}

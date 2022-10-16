@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import firestoreDatabase from "../firebase";
+import { firestoreDatabase } from "../firebase";
 
 const fetchAllProducts = async () => {
   const data = await collection(firestoreDatabase, "products");

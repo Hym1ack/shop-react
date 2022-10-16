@@ -1,0 +1,44 @@
+.title {
+    margin-bottom: 28px;
+
+    text-align: left;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.advantage {
+    display: inline-flex;
+    align-items: center;
+    gap: 21px;
+
+    margin-bottom: 9px;
+}
+
+.image {
+    width: 44px;
+    height: 43px;
+}
+
+.text {
+    width: 184px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.loginBtn {
+    width: 100%;
+    margin: 23px auto 0;
+    padding: 12px;
+
+    background: #FF0000;
+    border-radius: 16px;
+
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #FFFFFF;
+}
