@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 // eslint-disable-next-line import/no-unresolved
 import "swiper/css/navigation";
 
-import { Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 
 import "./Slider.css";
 
@@ -104,12 +104,16 @@ function Slider({ title, titleStyle, children, type, slidesPerView }) {
       {buttons(type)}
       <Swiper
         slidesPerView={slidesPerView}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: type === 1,
+        }}
         pagination={
           type === 2 && {
             el: `.carousel-pagination`,
           }
         }
-        modules={[Navigation, Pagination]}
+        modules={[Autoplay, Navigation, Pagination]}
         className={type === 1 ? "sliderType1" : "sliderType2"}
         spaceBetween={27}
         loop
