@@ -1,0 +1,55 @@
+
+.settings {
+    width: 309px;
+
+    margin-top: 52px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+.title {
+    margin-bottom: 2px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #888888;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 24px 9px;
+    margin-bottom: 25px;
+
+    background: #F3F3F7;
+    border: 1px solid #E2E2E9;
+    border-radius: 10px;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+
+    -webkit-appearance: none;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.descr {
+    position: absolute;
+    width: 237px;
+    left: 320px;
+    bottom: 30%;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+}
