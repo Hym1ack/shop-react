@@ -122,3 +122,42 @@ export const banners = [
     bgImage: banner4,
   },
 ];
+
+export const ordersData = [
+  {
+    inWork: true,
+    delivered: false,
+    orderId: "56940721-1",
+    date: "16.10.2022",
+    address:
+      "ул. Новая, д. 13, кв 33 посёлок Ильинское-Усово, городской округ Красногорс",
+    totalPrice: 333,
+  },
+  {
+    inWork: false,
+    delivered: false,
+    orderId: "56940724-1",
+    date: "16.10.2022",
+    address:
+      "ул. Новая, д. 13, кв 33 посёлок Ильинское-Усово, городской округ Красногорс",
+    totalPrice: 333,
+  },
+  {
+    inWork: false,
+    delivered: true,
+    orderId: "56940754-1",
+    date: "16.10.2022",
+    address:
+      "ул. Новая, д. 13, кв 33 посёлок Ильинское-Усово, городской округ Красногорс",
+    totalPrice: 333,
+  },
+  {
+    inWork: false,
+    delivered: true,
+    orderId: "56940755-1",
+    date: "16.10.2022",
+    address:
+      "ул. Новая, д. 13, кв 33 посёлок Ильинское-Усово, городской округ Красногорс",
+    totalPrice: 333,
+  },
+];

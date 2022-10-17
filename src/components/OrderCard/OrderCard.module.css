@@ -1,0 +1,124 @@
+.order {
+    width: 410px;
+
+    background: #FFFFFF;
+    border: 1px solid #DADADA;
+    border-radius: 10px;
+
+    position: relative;
+}
+
+.orderWork {
+    border-color: #FF0000;
+}
+
+.status {
+    display: inline-block;
+    border-radius: 10px 0;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+}
+
+.inWork {
+    padding: 0 8px 0 15px;
+    background: #FF0000;
+}
+
+.finished {
+    padding: 0 13px 0 15px;
+    background: #8E8E8E;
+}
+
+.orderId {
+    position: absolute;
+    top: 7px;
+    right: 18px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.delivery {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 14px 19px 6px 19px;
+}
+
+.method {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.date {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #434343;
+}
+
+.address {
+    height: 55px;
+    margin: 6px 19px 19px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #434343;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 8px 19px 19px;
+}
+
+.price {
+    display: inline-block;
+
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+}
+
+.btn {
+    width: 148px;
+    padding: 9px 20px 11px;
+    border: 1px solid;
+    border-radius: 60px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.trace {
+    border-color: #FF0000;
+    color: #FF0000;
+}
+
+.repeat {
+    padding-left: 44px;
+
+    border-color: #8E8E8E;
+    position: relative;
+}
+
+.repeat:before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    background-image: url("../../assets/images/user/repeatOrder.svg");
+    width: 30px;
+    height: 30px;
+
+}
