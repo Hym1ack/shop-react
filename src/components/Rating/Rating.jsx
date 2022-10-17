@@ -20,9 +20,10 @@ function Rating() {
       </div>
       <div>
         <div className={s.stars}>
-          {maxRating.map((_, i) => (
+          {maxRating.map((key, i) => (
             <button
               className={s.starButton}
+              key={key}
               type="button"
               onClick={() => setRating(i + 1)}
             >
