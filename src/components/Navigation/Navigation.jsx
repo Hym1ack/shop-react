@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import s from "./Navigation.module.css";
 
 import marketImage from "../../assets/images/header/header-supermarket.png";
@@ -7,6 +6,7 @@ import freezeImage from "../../assets/images/header/header-freezen.png";
 import anotherImage from "../../assets/images/header/header-another.png";
 import stockImage from "../../assets/images/header/header-stock.png";
 import shopsImage from "../../assets/images/header/header-shops.png";
+import { AppLink } from "../UiKit/AppLink";
 
 function Navigation() {
   const links = [
@@ -18,16 +18,18 @@ function Navigation() {
     { to: "address", label: "Магазины", image: shopsImage },
   ];
 
-  const setActive = ({ isActive }) =>
-    isActive ? `${s.item} ${s.itemActive}` : s.item;
-
   return (
     <nav className={s.list}>
       {links.map((link) => (
-        <NavLink className={setActive} to={link.to} key={link.to}>
+        <AppLink
+          className={s.item}
+          activeClassActive={s.itemActive}
+          to={link.to}
+          key={link.to}
+        >
           <img src={link.image} alt="%" />
           <span className={s.itemText}>{link.label}</span>
-        </NavLink>
+        </AppLink>
       ))}
     </nav>
   );
