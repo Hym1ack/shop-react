@@ -1,41 +1,15 @@
-function Favourite({ favorited, border = false }) {
+import { ReactComponent as HeartCircle } from "../../assets/images/heartCircle.svg";
+import { ReactComponent as Heart } from "../../assets/images/heart.svg";
+import s from "./Favourite.module.css";
+
+function Favourite({ favorited = false, circle = false }) {
+  const classes = favorited ? `${s.img} ${s.active}` : s.img;
+
   return (
-    <button type="button" style={{ cursor: "pointer" }}>
-      {border ? (
-        <svg
-          width="44"
-          height="42"
-          viewBox="0 0 44 42"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M31.1756 13.8614C29.9981 12.6692 28.4296 12.0094 26.7635 12.0094C25.0973 12.0094 23.5242 12.6692 22.3467 13.8661L22.007 14.2101L21.6579 13.8567C20.4758 12.6597 18.9073 12 17.2365 12C15.5703 12 14.0066 12.655 12.8291 13.852C11.6469 15.0489 11 16.637 11 18.3241C11 20.0111 11.6516 21.5992 12.8337 22.7915L21.3368 31.4011C21.5136 31.5802 21.7556 31.6838 22.0116 31.6838C22.2629 31.6838 22.505 31.5802 22.6865 31.4011L31.1663 22.8056C32.3484 21.6087 32.9953 20.0206 33 18.3335C33.0046 16.6465 32.3531 15.0584 31.1756 13.8614Z"
-            fill={favorited ? "FF0000" : "#DADADA"}
-          />
-          <rect
-            x="0.5"
-            y="0.5"
-            width="43"
-            height="41"
-            rx="20.5"
-            stroke={favorited ? "FF0000" : "#DADADA"}
-          />
-        </svg>
-      ) : (
-        <svg
-          width="22"
-          height="21"
-          viewBox="0 0 22 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20.1756 2.46346C18.9981 1.27122 17.4296 0.611476 15.7635 0.611476C14.0973 0.611476 12.5242 1.27122 11.3467 2.46817L11.007 2.81218L10.6579 2.45875C9.47577 1.26179 7.90733 0.602051 6.23651 0.602051C4.57034 0.602051 3.00655 1.25708 1.82906 2.45404C0.646921 3.651 0 5.23909 0 6.92614C0 8.61319 0.651575 10.2013 1.83372 11.3935L10.3368 20.0031C10.5136 20.1822 10.7556 20.2859 11.0116 20.2859C11.2629 20.2859 11.505 20.1822 11.6865 20.0031L20.1663 11.4077C21.3484 10.2107 21.9953 8.62261 22 6.93556C22.0046 5.24851 21.3531 3.66042 20.1756 2.46346Z"
-            fill={favorited ? "FF0000" : "#DADADA"}
-          />
-        </svg>
-      )}
+    <button type="button" className={s.button}>
+      {circle && <HeartCircle className={classes} />}
+
+      {!circle && <Heart className={classes} />}
     </button>
   );
 }

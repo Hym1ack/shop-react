@@ -1,0 +1,24 @@
+.button {
+    cursor: pointer;
+}
+
+.img path,
+.img rect {
+    transition: .3s;
+}
+
+.img:hover path {
+    fill: #FF0000;
+}
+
+.img:hover rect {
+    stroke: #FF0000;
+}
+
+.active path {
+    fill: #FF0000;
+}
+
+.active rect {
+    stroke: #FF0000;
+}
