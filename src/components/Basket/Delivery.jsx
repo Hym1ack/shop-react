@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import s from "./Delivery.module.css";
 import { setNewPrice } from "../../redux/cartSlice";
+import DeliveryModal from "./DeliveryModal/DeliveryModal";
+import Checkbox from "../UiKit/Checkbox";
 
 function Delivery() {
   const dispatch = useDispatch();
@@ -71,20 +73,18 @@ function Delivery() {
         </button>
       </div>
       <div className={s.bonus}>
-        <input
-          type="checkbox"
-          id="applyBonuses"
-          className={s.bonusInput}
+        <Checkbox
           checked={checked}
           onChange={applyBonuses}
-        />
-        <label className={s.bonusLabel} htmlFor="applyBonuses">
+          id="applyBonuses"
+          labelClass={s.bonusLabel}
+        >
           Списать бонусы
           <span className={s.count}>Всего {bonuses} бонусов</span>
           <p className={s.available}>
             Доступно к списанию <span>{availableBonuses}</span> бонусов
           </p>
-        </label>
+        </Checkbox>
       </div>
 
       <div>

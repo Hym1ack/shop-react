@@ -1,0 +1,56 @@
+
+.checkbox {
+    display: none;
+}
+
+.checkbox:checked + .label {
+    opacity: 1;
+}
+
+.label {
+    display: inline-block;
+    position: relative;
+
+    padding-left: 25px;
+
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    color: #000000;
+
+    transition: .3s;
+}
+
+.label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 14px;
+    height: 14px;
+    background: #FFFFFF;
+    border-radius: 100%;
+}
+
+.label:after {
+    content: "";
+    position: absolute;
+
+    left: 4px;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background-color: #FF0000;
+
+    transition: all 0.2s ease;
+}
+
+.label:after {
+    opacity: 0;
+}
+
+.checkbox:checked + .label:after {
+    opacity: 1;
+}
