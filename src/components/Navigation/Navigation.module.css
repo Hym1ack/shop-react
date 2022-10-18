@@ -1,6 +1,5 @@
 .list {
     display: flex;
-    gap: 14px;
 
     cursor: pointer;
 }

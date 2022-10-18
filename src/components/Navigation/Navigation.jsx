@@ -1,4 +1,16 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// eslint-disable-next-line import/no-unresolved
+import "swiper/css";
+// eslint-disable-next-line import/no-unresolved
+import "swiper/css/free-mode";
+
+// import required modules
+import { FreeMode } from "swiper";
+
 import s from "./Navigation.module.css";
+
+import "./slider.css";
 
 import marketImage from "../../assets/images/header/header-supermarket.png";
 import cookingImage from "../../assets/images/header/header-cooking.png";
@@ -20,17 +32,26 @@ function Navigation() {
 
   return (
     <nav className={s.list}>
-      {links.map((link) => (
-        <AppLink
-          className={s.item}
-          activeClassActive={s.itemActive}
-          to={link.to}
-          key={link.to}
-        >
-          <img src={link.image} alt="%" />
-          <span className={s.itemText}>{link.label}</span>
-        </AppLink>
-      ))}
+      <Swiper
+        slidesPerView="auto"
+        spaceBetween={14}
+        freeMode
+        modules={[FreeMode]}
+        className="mySwiper"
+      >
+        {links.map((link) => (
+          <SwiperSlide key={link.to}>
+            <AppLink
+              className={s.item}
+              activeClassActive={s.itemActive}
+              to={link.to}
+            >
+              <img src={link.image} alt="%" />
+              <span className={s.itemText}>{link.label}</span>
+            </AppLink>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </nav>
   );
 }
