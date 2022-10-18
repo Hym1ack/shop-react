@@ -1,5 +1,6 @@
 .footer {
     margin-top: 60px;
+    padding-top: 37px;
     flex-shrink: 0;
     width: 100vw;
     background-color: #D90000;
@@ -9,32 +10,45 @@
 
 .information {
     display: flex;
-    justify-content: space-between;
-
+    margin-bottom: 76px;
+    gap: 66px;
     font-size: 14px;
     line-height: 22px;
+}
+
+
+.club {
+    margin-right: 37px;
+}
+
+.feedback {
+    padding-top: 10px;
+}
+
+.subscribe {
+    margin-left: auto;
+    margin-top: 9px;
+    margin-right: 7px;
 }
 
 .infoTitle {
     font-weight: 700;
 }
 
-.infoColumn {
-    margin-top: 37px;
-    margin-bottom: 75px;
-}
-
 .links {
     font-weight: 400;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .link {
-
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
 }
 
 .phone {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
 }
 
@@ -50,10 +64,9 @@
     margin-right: 10px;
 }
 
-
 .phoneDescr {
-    margin-top: 2px;
-    margin-bottom: 13px;
+    padding-left: 35px;
+    margin-bottom: 10px;
     text-align: right;
     font-weight: 400;
     font-size: 14px;
@@ -69,40 +82,13 @@
     margin-right: 22px;
 }
 
-.subscribeText {
-    margin-bottom: 9px;
-
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 25px;
-    letter-spacing: 0.025em;
-}
-
-.subscribeInput {
-    width: 250px;
-    height: 46px;
-    padding: 10px;
-    background: #FFFFFF;
-    border-radius: 16px;
-}
-
-.subscribeButton {
-    padding: 10px 14px 12px 15px;
-    margin-left: 12px;
-    border: 1px solid #FFFFFF;
-    border-radius: 16px;
-
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 25px;
-    color: #FFFFFF;
-}
 
 .politics {
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
-.politicsLink {
+
+.checkboxLabel {
     margin-left: 6px;
     font-weight: 600;
     font-size: 14px;
@@ -113,6 +99,7 @@
 .footerBottom {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 19px;
 
     font-weight: 400;
     font-size: 12px;
@@ -121,4 +108,90 @@
 
 .footerBottom img {
     object-fit: cover;
+}
+
+@media (max-width: 1240px) {
+
+    .information {
+        margin-bottom: 30px;
+        gap: 0;
+        display: flex;
+    }
+
+    .online,
+    .club,
+    .feedback,
+    .subscribe {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .phoneDescr {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .information {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 'online club feedback ' 'subscribe subscribe subscribe';
+    }
+
+    .online {
+        grid-area: online;
+    }
+
+    .club {
+        grid-area: club;
+    }
+
+    .feedback {
+        grid-area: feedback;
+    }
+
+    .subscribe {
+        grid-area: subscribe;
+    }
+
+    .phoneNumber {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 30px
+    }
+}
+
+@media (max-width: 720px) {
+    .information {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 15px;
+        grid-template-areas:'feedback feedback' 'subscribe subscribe' 'online club';
+    }
+
+    .feedback {
+        align-self: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .footerBottom {
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+
+    .feedback {
+        margin: 0;
+    }
+
+    .subscribe {
+        height: 170px;
+    }
+
+    .footer {
+        padding-top: 0;
+    }
 }
