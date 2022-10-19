@@ -5,6 +5,11 @@
 }
 
 
+.slide {
+    flex-shrink: 1;
+}
+
+
 .item {
     display: flex;
     align-items: center;
@@ -21,7 +26,6 @@
 
 .item img {
     vertical-align: middle;
-
 }
 
 .itemText {
@@ -35,4 +39,46 @@
 
 .itemActive {
     background: #FFE8BC;
+}
+
+@media screen and (max-width: 768px) {
+
+    .item {
+        height: 40px;
+        padding: 10px 8px 10px 8px;
+
+    }
+
+    .item img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .itemText {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .item {
+        height: 30px;
+        padding: 7px 6px 7px 5px;
+        border-radius: 8px;
+    }
+
+    .item img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .itemText {
+        padding-left: 2px;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 13px;
+    }
 }

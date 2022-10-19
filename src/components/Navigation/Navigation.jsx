@@ -8,9 +8,8 @@ import "swiper/css/free-mode";
 // import required modules
 import { FreeMode } from "swiper";
 
+import { useMediaQuery } from "react-responsive";
 import s from "./Navigation.module.css";
-
-import "./slider.css";
 
 import marketImage from "../../assets/images/header/header-supermarket.png";
 import cookingImage from "../../assets/images/header/header-cooking.png";
@@ -21,6 +20,9 @@ import shopsImage from "../../assets/images/header/header-shops.png";
 import { AppLink } from "../UiKit/AppLink";
 
 function Navigation() {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isSmallMobile = useMediaQuery({ query: "(max-width: 480px)" });
+
   const links = [
     { to: "shop/water", label: "Супермаркет", image: marketImage },
     { to: "shop/bakery", label: "Кулинария", image: cookingImage },
@@ -30,17 +32,20 @@ function Navigation() {
     { to: "address", label: "Магазины", image: shopsImage },
   ];
 
+  // eslint-disable-next-line no-nested-ternary
+  const spaceBetween = isSmallMobile ? 7 : isMobile ? 10 : 14;
+
   return (
     <nav className={s.list}>
       <Swiper
+        spaceBetween={spaceBetween}
         slidesPerView="auto"
-        spaceBetween={14}
         freeMode
         modules={[FreeMode]}
-        className="mySwiper"
+        style={{ marginLeft: 0 }}
       >
         {links.map((link) => (
-          <SwiperSlide key={link.to}>
+          <SwiperSlide key={link.to} className={s.slide}>
             <AppLink
               className={s.item}
               activeClassActive={s.itemActive}
