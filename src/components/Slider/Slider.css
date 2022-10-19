@@ -9,10 +9,8 @@
 
 
 .sliderContainer {
-    margin-bottom: 83px;
-
+    margin: 0 auto;
     position: relative;
-
 }
 
 .title {
