@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Checkbox from "../UiKit/Checkbox";
 import s from "./Features.module.css";
 
 function Features() {
@@ -18,27 +19,25 @@ function Features() {
     { id: 3, value: "ourProduction", text: "Продукция от «Ильинского»" },
   ];
 
+  const toggleFeature = (feature) =>
+    setFeatures({
+      ...features,
+      [feature.value]: !features[feature.value],
+    });
+
   return (
     <form className={s.feature}>
       <legend className={s.title}>Особенности</legend>
       {featuresData.map((feature) => (
-        <div key={feature.value}>
-          <input
-            type="checkbox"
-            id={feature.value}
-            className={s.featureInput}
-            checked={features[feature.value] === true}
-            onChange={() =>
-              setFeatures({
-                ...features,
-                [feature.value]: !features[feature.value],
-              })
-            }
-          />
-          <label className={s.featureLabel} htmlFor={feature.value}>
-            {feature.text}
-          </label>
-        </div>
+        <Checkbox
+          checked={features[feature.value]}
+          onChange={() => toggleFeature(feature)}
+          id={feature.value}
+          labelClass={s.featureLabel}
+          key={feature.id}
+        >
+          {feature.text}
+        </Checkbox>
       ))}
     </form>
   );

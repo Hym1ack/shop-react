@@ -13,54 +13,22 @@
 
 }
 
-.featureInput {
-    display: none;
-}
-
-.featureInput + .featureLabel {
-    display: inline-block;
-    position: relative;
-
+.featureLabel {
     margin-bottom: 17px;
-    padding-left: 25px;
 
-    cursor: pointer;
-    font-weight: 700;
     font-size: 20px;
-
+    line-height: 27px;
 }
 
-.featureInput + .featureLabel:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 2px;
+.featureLabel:before {
     width: 17px;
     height: 17px;
     background: rgba(255, 169, 0, 0.35);
-    border: 1px solid #dddddd;
-    border-radius: 100%;
 }
 
-.featureInput + .featureLabel:after {
-    content: "";
-    position: absolute;
-
+.featureLabel:after {
     left: 5px;
     top: 7px;
     width: 7px;
     height: 7px;
-    border-radius: 100%;
-    background-color: #FF0000;
-
-    transition: all 0.2s ease;
-}
-
-
-.featureInput + .featureLabel:after {
-    opacity: 0;
-}
-
-.featureInput:checked + .featureLabel:after {
-    opacity: 1;
 }
