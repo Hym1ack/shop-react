@@ -13,21 +13,21 @@ function Footer() {
       title: "Ильинский онлайн",
       class: s.online,
       links: [
-        { to: "bakery", label: "Кулинария" },
-        { to: "water", label: "Супермаркет" },
-        { to: "dumplings", label: "Заморозка" },
-        { to: "beauty", label: "Другое" },
+        { id: 1, to: "bakery", label: "Кулинария" },
+        { id: 2, to: "water", label: "Супермаркет" },
+        { id: 3, to: "dumplings", label: "Заморозка" },
+        { id: 4, to: "beauty", label: "Другое" },
       ],
     },
     {
       title: "Ильинский клуб",
       class: s.club,
       links: [
-        { to: "bakery", label: "Акции" },
-        { to: "water", label: "Доставка и оплата" },
-        { to: "dumplings", label: "Программа лояльности" },
-        { to: "beauty", label: "Политика конфиденциальности" },
-        { to: "beauty", label: "Вакансии" },
+        { id: 1, to: "bakery", label: "Акции" },
+        { id: 2, to: "water", label: "Доставка и оплата" },
+        { id: 3, to: "dumplings", label: "Программа лояльности" },
+        { id: 4, to: "beauty", label: "Политика конфиденциальности" },
+        { id: 5, to: "beauty", label: "Вакансии" },
       ],
     },
     {
@@ -35,9 +35,9 @@ function Footer() {
       phone: true,
       class: s.feedback,
       links: [
-        { to: "bakery", label: "Адреса магазинов", img: locationImg },
-        { to: "water", label: "Следите за нами", img: instImg },
-        { to: "dumplings", label: "Обратная связь", img: emailImg },
+        { id: 1, to: "bakery", label: "Адреса магазинов", img: locationImg },
+        { id: 2, to: "water", label: "Следите за нами", img: instImg },
+        { id: 3, to: "dumplings", label: "Обратная связь", img: emailImg },
       ],
     },
   ];
@@ -47,7 +47,7 @@ function Footer() {
       <div className="container">
         <div className={s.information}>
           {footerElements.map((element) => (
-            <div className={element.class}>
+            <div className={element.class} key={element.class}>
               {element.title && (
                 <h6 className={s.infoTitle}>{element.title}</h6>
               )}
@@ -62,7 +62,7 @@ function Footer() {
               )}
               <ul className={s.links}>
                 {element.links.map((link) => (
-                  <AppLink className={s.link} to={link.to}>
+                  <AppLink className={s.link} to={link.to} key={link.id}>
                     {link.img && (
                       <img
                         className={s.linkImg}
@@ -83,7 +83,7 @@ function Footer() {
         <div className={s.footerBottom}>
           <p>© 2022 Ильинский онлайн — доставка товаров и продуктов на дом</p>
           <p>Информация на сайте не является публичной офертой</p>
-          <VisaMastercard />
+          <VisaMastercard className={s.footerVisa} />
         </div>
       </div>
     </footer>
