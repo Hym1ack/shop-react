@@ -7,8 +7,7 @@ import Favourite from "../../UiKit/Favourite";
 function ProductCard({ product }) {
   const [modalProduct, setModalProduct] = useState(false);
 
-  const { image, availableCount, price, newPrice, productName, favorited } =
-    product;
+  const { image, availableCount, price, newPrice, productName, id } = product;
 
   const classesSale = newPrice ? `${s.sale} ${s.price}` : s.price;
 
@@ -23,7 +22,7 @@ function ProductCard({ product }) {
         product={product}
       />
       <div className={s.favourite}>
-        <Favourite favorited={favorited} />
+        <Favourite id={id} />
       </div>
       <div className={s.information}>
         <p className={s.infoAvailable}>В наличии {availableCount} шт.</p>
