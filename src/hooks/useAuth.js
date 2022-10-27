@@ -8,7 +8,7 @@ function useAuth() {
     birthdayDate,
     email,
     orders,
-    favoritesProducts,
+    favoritesProductsId,
   } = useSelector((state) => state.user);
 
   return {
@@ -19,7 +19,7 @@ function useAuth() {
     birthdayDate,
     email,
     orders,
-    favoritesProducts,
+    favoritesProductsId,
   };
 }
 

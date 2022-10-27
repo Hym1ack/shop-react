@@ -12,8 +12,7 @@ import CategoriesSkeleton from "../../components/Categories/CategoriesSkeleton";
 import CategoriesContainer from "../../components/Categories/CategoriesContainer";
 
 function ShopProducts() {
-  const { isLoading } = useSelector((state) => state.shop);
-  const title = useSelector((state) => state.shop.products.title);
+  const { isLoading, title } = useSelector((state) => state.shop);
   const dispatch = useDispatch();
   const loadCatalog = useCatalog().to;
 
