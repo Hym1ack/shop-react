@@ -14,28 +14,24 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 import ProfileHistory from "./components/Profile/ProfileHistory/ProfileHistory";
 import ProfileFavourite from "./components/Profile/ProfileFavourite/ProfileFavourite";
+import Home from "./pages/Home/Home";
 
 function App() {
   const dispatch = useDispatch();
 
+  // eslint-disable-next-line consistent-return
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser === null) return null;
 
-    const { displayName, email, uid, phoneNumber } = currentUser;
+    const { displayName, email, phoneNumber, uid } = currentUser;
 
-    return dispatch(
-      login({
-        displayName,
-        email,
-        uid,
-        phoneNumber,
-      })
-    );
+    dispatch(login({ displayName, email, phoneNumber, uid }));
   });
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
         <Route path="shop" element={<ShopProducts />}>
           <Route path=":category" element={<Products />} />
         </Route>
@@ -62,6 +58,3 @@ function App() {
 export default App;
 
 // Todo сделать пагинацию товаров
-// Todo сделать блок что можно добавить
-
-//    <Route index element={<Home />} />
