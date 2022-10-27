@@ -11,6 +11,8 @@ function Delivery() {
   const { totalQuantity, totalAmount, totalWeight, totalDiscount } =
     useSelector((state) => state.cart);
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   const [checked, setChecked] = useState(false);
   const [bonuses, setBonuses] = useState(300);
   const availableBonuses = (bonuses * 0.03).toFixed();
@@ -28,7 +30,7 @@ function Delivery() {
     setChecked(!checked);
   };
 
-  const infoBlock = [
+  const deliveryInfo = [
     {
       title: `Товары (${totalQuantity})`,
       text: `${totalWeight}`,
@@ -55,9 +57,18 @@ function Delivery() {
     <div className={s.delivery}>
       <div className={s.top}>
         <h6 className={s.time}>Доставка сегодня, 18:11</h6>
-        <button className={s.changeTime} type="button">
+        <button
+          onClick={() => setModalOpen(true)}
+          className={s.changeTime}
+          type="button"
+        >
           Изменить
         </button>
+
+        <DeliveryModal
+          modalOpen={modalOpen}
+          setModalOpen={() => setModalOpen(false)}
+        />
       </div>
       <p className={s.map}>
         ул. Новая, д. 13, посёлок Ильинское-Усово, городской округ Красногорск
@@ -88,7 +99,7 @@ function Delivery() {
       </div>
 
       <div>
-        {infoBlock.map((info) => (
+        {deliveryInfo.map((info) => (
           <div className={s.info} key={info.title}>
             <p className={s.infoText}>{info.title}</p>
 
