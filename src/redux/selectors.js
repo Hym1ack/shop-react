@@ -1,9 +1,10 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-const allCategoriesActive = (state) => state.shop.products.activeCategories;
+const allCategoriesActive = (state) => state.shop.activeCategories;
 const activeSort = (state) => state.shop.sort.value;
 
-const allProducts = (state) => state.shop.products.products;
+const allProducts = (state) => state.shop.products;
+export const favoritesProducts = (state) => state.shop.favoritesProducts;
 
 export const selectProductsByFilters = createSelector(
   [allProducts, allCategoriesActive, activeSort],

@@ -36,6 +36,17 @@ export const fetchProductById = createAsyncThunk(
   }
 );
 
+export const fetchFavouritesProducts = createAsyncThunk(
+  "shop/fetchFavouritesProducts",
+  async ([...idProducts]) => {
+    const products = await fetchAllProducts();
+
+    return products.filter((product) =>
+      idProducts.find((id) => (product.id === Number(id) ? product : null))
+    );
+  }
+);
+
 export const fetchRecommendedProducts = createAsyncThunk(
   "shop/fetchRecommended",
   async () => {
@@ -50,22 +61,25 @@ export const shopSlice = createSlice({
   initialState: {
     isLoading: true,
     products: [],
+    activeCategories: [],
+    categories: [],
+    title: "",
     recommendedProducts: [],
+    favoritesProducts: [],
     sort: { value: "rating", label: "По популярности" },
   },
   reducers: {
     addCategory(state, action) {
-      if (state.products.activeCategories.includes(action.payload)) {
-        state.products.activeCategories =
-          state.products.activeCategories.filter(
-            (item) => item !== action.payload
-          );
+      if (state.activeCategories.includes(action.payload)) {
+        state.activeCategories = state.activeCategories.filter(
+          (item) => item !== action.payload
+        );
       } else {
-        state.products.activeCategories.push(action.payload);
+        state.activeCategories.push(action.payload);
       }
     },
     clearCategories(state) {
-      state.products.activeCategories = [];
+      state.activeCategories = [];
     },
     setSort(state, action) {
       state.sort = action.payload;
@@ -73,7 +87,12 @@ export const shopSlice = createSlice({
   },
   extraReducers: {
     [fetchProducts.fulfilled]: (state, action) => {
-      state.products = action.payload;
+      const { activeCategories, products, categories, title } = action.payload;
+
+      state.products = products;
+      state.activeCategories = activeCategories;
+      state.categories = categories;
+      state.title = title;
       state.isLoading = false;
     },
     [fetchRecommendedProducts.fulfilled]: (state, action) => {
@@ -87,6 +106,9 @@ export const shopSlice = createSlice({
       if (!isUniq) {
         state.products.push(action.payload);
       }
+    },
+    [fetchFavouritesProducts.fulfilled]: (state, action) => {
+      state.favoritesProducts = action.payload;
     },
   },
 });
