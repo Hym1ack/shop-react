@@ -1,5 +1,5 @@
 .notFound {
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -25,8 +25,9 @@
 }
 
 .error {
-    display: inline-flex;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     font-size: 240px;
     line-height: 328px;
@@ -53,4 +54,44 @@
 
 .link:hover {
     opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+    .error {
+        font-size: 172px;
+        line-height: 168px;
+    }
+
+    .image {
+        width: 172px;
+        height: 172px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .error {
+        font-size: 130px;
+    }
+
+    .image {
+        width: 141px;
+        height: 141px;
+    }
+
+    .descr {
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .descr span {
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    .link {
+        margin-top: 30px;
+        font-size: 13px;
+        line-height: 18px;
+    }
 }
