@@ -3,15 +3,8 @@ import BuyButton from "../../UiKit/BuyButton";
 import Favourite from "../../UiKit/Favourite";
 
 function ProductInfo({ product }) {
-  const {
-    availableCount,
-    price,
-    newPrice,
-    productName,
-    weight,
-    favorited,
-    information,
-  } = product;
+  const { availableCount, price, newPrice, productName, weight, information } =
+    product;
 
   const weightText = weight < 1 ? `${weight} г.` : `${weight} кг.`;
 
@@ -29,7 +22,7 @@ function ProductInfo({ product }) {
         <div className={s.buyButton}>
           <BuyButton product={product} />
         </div>
-        <Favourite favorited={favorited} border />
+        <Favourite circle />
       </div>
       {information && (
         <div className={s.productDetails}>

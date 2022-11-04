@@ -11,4 +11,4 @@ function AppLink({ children, className, activeClassActive, to }) {
   );
 }
 
-export { AppLink };
+export default AppLink;

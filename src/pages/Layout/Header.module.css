@@ -16,6 +16,7 @@
 .headerRight {
     width: 300px;
     display: flex;
+    justify-content: flex-end;
     gap: 14px;
 }
 
@@ -36,6 +37,12 @@
     fill: #FFA900;
 }
 
+@media (max-width: 1200px) {
+    .header {
+        margin-bottom: 40px;
+    }
+
+}
 
 @media (max-width: 768px) {
 

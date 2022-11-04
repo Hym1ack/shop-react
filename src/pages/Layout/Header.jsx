@@ -4,7 +4,7 @@ import s from "./Header.module.css";
 import { ReactComponent as AppLogo } from "../../assets/images/header/logo.svg";
 import Navigation from "../../components/Navigation/Navigation";
 import ProfileButton from "../../components/Profile/ProfileButton";
-import { AppLink } from "../../components/UiKit/AppLink";
+import AppLink from "../../components/UiKit/AppLink";
 import { ReactComponent as FavouriteLogo } from "../../assets/images/header/favourites.svg";
 import Search from "../../components/Search/Search";
 import Cart from "../../components/Cart/Cart";

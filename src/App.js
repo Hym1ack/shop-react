@@ -19,13 +19,12 @@ import Home from "./pages/Home/Home";
 function App() {
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line consistent-return
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser === null) return null;
 
     const { displayName, email, phoneNumber, uid } = currentUser;
 
-    dispatch(login({ displayName, email, phoneNumber, uid }));
+    return dispatch(login({ displayName, email, phoneNumber, uid }));
   });
 
   return (

@@ -1,5 +1,5 @@
 import s from "./Catalog.module.css";
-import { AppLink } from "../UiKit/AppLink";
+import AppLink from "../UiKit/AppLink";
 
 function CatalogLinks({ catalog }) {
   const { items, title } = catalog;
