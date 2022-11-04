@@ -1,0 +1,40 @@
+.paginationContainer {
+    display: block;
+}
+
+.pagination {
+    margin-top: 55px;
+    display: inline-flex;
+    gap: 25px;
+}
+
+.pagination li a {
+    padding: 7px 15px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #B69657;
+
+    transition: .3s;
+    user-select: none;
+}
+
+.pagination li:hover a {
+    cursor: pointer;
+    background: #FFA900;
+    border-radius: 7px;
+
+}
+
+
+.pagination :global .selected a {
+    border-radius: 7px;
+
+    color: #FFFFFF;
+    background: #FFA900;
+}
+
+.pagination :global .disabled {
+    display: none;
+}
