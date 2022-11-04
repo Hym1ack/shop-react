@@ -1,58 +1,92 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestoreDatabase } from "../firebase";
-
-const fetchAllProducts = async () => {
-  const data = await collection(firestoreDatabase, "products");
-  const docs = await getDocs(data);
-  const allProducts = [];
-
-  docs.forEach((el) => {
-    if (el.data().products === undefined) return null;
-    return allProducts.push(el.data().products);
-  });
-
-  return allProducts.flat();
-};
 
 export const fetchProducts = createAsyncThunk(
   "shop/fetchProducts",
-  async (category) => {
-    const data = await doc(firestoreDatabase, "products", category);
-    const docs = await getDoc(data);
+  async (categories) => {
+    const products = [];
+    const docRef = collection(firestoreDatabase, "products");
 
-    return docs.data();
+    const q = query(docRef, where("category", "in", categories));
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+
+    return products;
+  }
+);
+
+export const fetchCategories = createAsyncThunk(
+  "shop/fetchCategories",
+  async (categories) => {
+    const categoriesOut = [];
+    const docRef = collection(firestoreDatabase, "categories");
+
+    const q = query(docRef, where("key", "in", categories));
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      categoriesOut.push(doc.data());
+    });
+
+    return categoriesOut;
   }
 );
 
 export const fetchProductById = createAsyncThunk(
   "shop/fetchProductById",
   async (id) => {
-    const products = await fetchAllProducts();
+    const docRef = collection(firestoreDatabase, "products");
 
-    return products.find((product) =>
-      product.id === Number(id) ? product : null
-    );
+    const q = await query(docRef, where("id", "==", id));
+    const querySnapshot = await getDocs(q);
+
+    let product = {};
+    querySnapshot.forEach((doc) => {
+      product = doc.data();
+    });
+
+    return product;
   }
 );
 
 export const fetchFavouritesProducts = createAsyncThunk(
   "shop/fetchFavouritesProducts",
-  async ([...idProducts]) => {
-    const products = await fetchAllProducts();
+  async (idProducts) => {
+    const docRef = collection(firestoreDatabase, "products");
 
-    return products.filter((product) =>
-      idProducts.find((id) => (product.id === Number(id) ? product : null))
-    );
+    const q = await query(docRef, where("id", "in", idProducts));
+    const querySnapshot = await getDocs(q);
+
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+
+    return products;
   }
 );
 
 export const fetchRecommendedProducts = createAsyncThunk(
   "shop/fetchRecommended",
   async () => {
-    const products = await fetchAllProducts();
+    const docRef = collection(firestoreDatabase, "products");
 
-    return products.filter((product) => product.rating > 8);
+    const q = await query(docRef, where("rating", ">=", 8));
+
+    const querySnapshot = await getDocs(q);
+
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+
+    return products;
   }
 );
 
@@ -81,19 +115,23 @@ export const shopSlice = createSlice({
     clearCategories(state) {
       state.activeCategories = [];
     },
+    clearFavorites(state) {
+      state.favoritesProducts = [];
+    },
+    clearRecommended(state) {
+      state.recommendedProducts = [];
+    },
     setSort(state, action) {
       state.sort = action.payload;
     },
   },
   extraReducers: {
     [fetchProducts.fulfilled]: (state, action) => {
-      const { activeCategories, products, categories, title } = action.payload;
-
-      state.products = products;
-      state.activeCategories = activeCategories;
-      state.categories = categories;
-      state.title = title;
+      state.products = action.payload;
       state.isLoading = false;
+    },
+    [fetchCategories.fulfilled]: (state, action) => {
+      state.categories = action.payload;
     },
     [fetchRecommendedProducts.fulfilled]: (state, action) => {
       state.recommendedProducts = action.payload;
@@ -113,5 +151,11 @@ export const shopSlice = createSlice({
   },
 });
 
-export const { addCategory, clearCategories, setSort } = shopSlice.actions;
+export const {
+  addCategory,
+  clearCategories,
+  clearFavorites,
+  clearRecommended,
+  setSort,
+} = shopSlice.actions;
 export default shopSlice.reducer;
