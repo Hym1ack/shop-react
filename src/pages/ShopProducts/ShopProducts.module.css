@@ -18,6 +18,8 @@
     display: flex;
     justify-content: space-between;
     gap: 14px;
+
+    margin-bottom: 111px;
 }
 
 .catalog {
@@ -30,16 +32,8 @@
     flex-direction: column;
 }
 
-.categories {
-    display: block;
-    width: 100%;
-    margin-top: 7px;
-    margin-bottom: 28px;
-}
 
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    grid-gap: 25px;
+.newGoods {
+    margin-top: 89px;
+    margin-bottom: 60px;
 }

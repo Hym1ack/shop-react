@@ -1,34 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { SwiperSlide } from "swiper/react";
 import s from "./ShopProducts.module.css";
 import Sort from "../../components/Sort/Sort";
 import Catalog from "../../components/Catalog/Catalog";
 import Features from "../../components/Features/Features";
-import { fetchProducts } from "../../redux/shopSlice";
-import ProductSkeleton from "../../components/Product/ProductSkeleton/ProductSkeleton";
+import { fetchRecommendedProducts } from "../../redux/shopSlice";
 import Products from "../../components/Product/Products";
-import { useCatalog } from "../../hooks/useCatalog";
-import CategoriesSkeleton from "../../components/Categories/CategoriesSkeleton";
 import CategoriesContainer from "../../components/Categories/CategoriesContainer";
+import Slider from "../../components/Slider/Slider";
+import ProductCard from "../../components/Product/ProductCard/ProductCard";
+import NewGoods from "../../components/NewGoods/NewGoods";
+import { useCatalog } from "../../hooks/useCatalog";
 
 function ShopProducts() {
-  const { isLoading, title } = useSelector((state) => state.shop);
+  const { recommendedProducts } = useSelector((state) => state.shop);
   const dispatch = useDispatch();
-  const loadCatalog = useCatalog().to;
+  const { label } = useCatalog();
 
   useEffect(() => {
-    dispatch(fetchProducts(loadCatalog));
-  }, [dispatch, loadCatalog]);
-
-  const productSkeleton = [...new Array(9)].map((_, index) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <ProductSkeleton key={index} />
-  ));
+    dispatch(fetchRecommendedProducts());
+  }, [dispatch]);
 
   return (
     <>
       <div className={s.topMain}>
-        <h4 className={s.title}>{title || "Страница товаров"}</h4>
+        <h4 className={s.title}>{label || "Страница товаров"}</h4>
         <Sort />
       </div>
       <div className={s.shop}>
@@ -37,13 +34,23 @@ function ShopProducts() {
           <Catalog />
         </div>
         <div className={s.productContainer}>
-          <div className={s.categories}>
-            {isLoading ? <CategoriesSkeleton /> : <CategoriesContainer />}
-          </div>
-          <div className={s.products}>
-            {isLoading ? productSkeleton : <Products />}
-          </div>
+          <CategoriesContainer />
+          <Products />
         </div>
+      </div>
+      <Slider
+        title="Рекомендации для вас"
+        type={1}
+        titleStyle={{ marginBottom: 68 }}
+      >
+        {recommendedProducts.map((product) => (
+          <SwiperSlide key={product.id}>
+            <ProductCard product={product} />
+          </SwiperSlide>
+        ))}
+      </Slider>
+      <div className={s.newGoods}>
+        <NewGoods />
       </div>
     </>
   );
