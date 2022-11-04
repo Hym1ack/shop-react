@@ -33,7 +33,12 @@ export const localeData = [
   {
     title: "Кулинария",
     items: [
-      { label: "Выпечка", to: "bakery", image: cooking1 },
+      {
+        label: "Выпечка",
+        to: "bakery",
+        image: cooking1,
+        categories: ["baguette", "puff", "loaf"],
+      },
       { label: "Пиццы (X)", to: "pizzas", image: cooking2 },
       { label: "Гриль-меню (X)", to: "grill", image: cooking3 },
       { label: "Салаты (X)", to: "salads", image: cooking4 },
@@ -47,8 +52,18 @@ export const localeData = [
   {
     title: "Супермаркет",
     items: [
-      { label: "Вода и напитки", to: "water", image: market1 },
-      { label: "Молоко, масло и яйца", to: "milk", image: market2 },
+      {
+        label: "Вода и напитки",
+        to: "water",
+        image: market1,
+        categories: ["water", "juice", "tea", "lemonade"],
+      },
+      {
+        label: "Молоко, масло и яйца",
+        to: "milk",
+        image: market2,
+        categories: ["milk", "oil", "eggs"],
+      },
       { label: "Снэки и сухофрукты (X)", to: "snakes", image: market3 },
       { label: "Кофе, чай и сладости (X)", to: "tea", image: market4 },
       { label: "Макароны и крупы (X)", to: "cereals", image: market5 },
@@ -66,6 +81,7 @@ export const localeData = [
         label: "Пельмени, вареники и равиоли",
         to: "dumplings",
         image: freeze1,
+        categories: ["dumplings", "vareniki", "ravioli"],
       },
       { label: "Хинкали и манты (X)", to: "khinkali", image: freeze2 },
       { label: "Полуфабрикаты (X)", to: "semi-finished", image: freeze3 },
@@ -81,7 +97,18 @@ export const localeData = [
   {
     title: "Разное",
     items: [
-      { label: "Красота и гигиена", to: "beauty", image: various1 },
+      {
+        label: "Красота и гигиена",
+        to: "beauty",
+        image: various1,
+        categories: [
+          "wipes",
+          "deodorants",
+          "bathAndSoul",
+          "facialCare",
+          "handCare",
+        ],
+      },
       { label: "Стирка и уборка (X)", to: "cleaning", image: various2 },
       { label: "Полезные мелочи (X)", to: "things", image: various3 },
     ],
