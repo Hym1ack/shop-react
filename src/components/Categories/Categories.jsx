@@ -7,11 +7,11 @@ function Categories({
   categoriesActive,
   dispatch,
 }) {
-  const categoryElements = categories.map((category, i) => (
+  const categoryElements = categories.map((category) => (
     <option
-      onClick={() => dispatch(addCategory(categories[i].key))}
+      onClick={() => dispatch(addCategory(category.key))}
       className={
-        categoriesActive.includes(categories[i].key)
+        categoriesActive.includes(category.key)
           ? `${s.categoryActive} ${s.category}`
           : s.category
       }
