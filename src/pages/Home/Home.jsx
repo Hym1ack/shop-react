@@ -1,6 +1,7 @@
 import { SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import cashbackImg from "../../assets/images/main/cashbackButton.png";
 import reviewImg from "../../assets/images/main/reviewButton.png";
 import sliderImg from "../../assets/images/main/slider1.png";
@@ -9,14 +10,23 @@ import deliveryMap from "../../assets/images/main/deliveryMap.png";
 import s from "./Home.module.css";
 import Slider from "../../components/Slider/Slider";
 import { banners, localeData, slidesHome } from "../../database/localeData";
-import ProductCard from "../../components/Product/ProductCard/ProductCard";
-import { addToCart } from "../../redux/cartSlice";
 import Promo from "../../components/Promo/Promo";
 import Rating from "../../components/Rating/Rating";
+import ProductCard from "../../components/Product/ProductCard/ProductCard";
+import {
+  clearRecommended,
+  fetchRecommendedProducts,
+} from "../../redux/shopSlice";
 
 function Home() {
-  const elements = useSelector((state) => state.shop.recommendedProducts);
+  const { recommendedProducts } = useSelector((state) => state.shop);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRecommendedProducts());
+
+    return () => dispatch(clearRecommended());
+  }, [dispatch]);
 
   const orderLinks = localeData.slice();
   [orderLinks[0], orderLinks[1]] = [orderLinks[1], orderLinks[0]];
@@ -30,7 +40,6 @@ function Home() {
               key={slide.to}
               style={{
                 backgroundImage: `url(${sliderImg})`,
-                height: "460px",
               }}
             >
               <h6 className={s.sliderTitle}>{slide.title}</h6>
@@ -40,31 +49,20 @@ function Home() {
             </SwiperSlide>
           ))}
         </Slider>
-
         <div className={s.buttonsRight}>
-          <img src={cashbackImg} alt="cashback" />
-          <img src={reviewImg} alt="review" />
+          <img className={s.img} src={cashbackImg} alt="cashback" />
+          <img className={s.img} src={reviewImg} alt="review" />
         </div>
       </div>
       <div className={s.sales}>
-        <Slider
-          title="Скидки"
-          titleStyle={{ marginBottom: "34px" }}
-          type={1}
-          slidesPerView={4}
-        >
-          {elements.map((product) => (
+        <Slider title="Скидки" titleStyle={{ marginBottom: "34px" }} type={1}>
+          {recommendedProducts.map((product) => (
             <SwiperSlide key={product.id}>
-              <ProductCard
-                product={product}
-                dispatch={dispatch}
-                addToCart={addToCart}
-              />
+              <ProductCard product={product} />
             </SwiperSlide>
           ))}
         </Slider>
       </div>
-
       {orderLinks.map((obj) => (
         <div key={obj.title}>
           <h4 className={s.itemTitle}>{obj.title}</h4>
@@ -86,7 +84,6 @@ function Home() {
           </div>
         </div>
       ))}
-
       <div className={s.sales}>
         <Slider
           title="Акции"
