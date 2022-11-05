@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import s from "./ProfileFavourite.module.css";
-import { fetchFavouritesProducts } from "../../../redux/shopSlice";
+import {
+  clearFavorites,
+  fetchFavouritesProducts,
+} from "../../../redux/shopSlice";
 import ProductCard from "../../Product/ProductCard/ProductCard";
 import ProductSkeleton from "../../Product/ProductSkeleton/ProductSkeleton";
 import { useAuth } from "../../../hooks/useAuth";
@@ -14,6 +17,8 @@ function ProfileFavourite() {
 
   useEffect(() => {
     dispatch(fetchFavouritesProducts(favoritesProductsId));
+
+    return () => dispatch(clearFavorites());
   }, [dispatch, favoritesProductsId]);
 
   if (favoritesProductsId.length === 0)

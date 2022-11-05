@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import s from "./ProfilePage.module.css";
-import { AppLink } from "../../components/UiKit/AppLink";
+import AppLink from "../../components/UiKit/AppLink";
 
 function ProfilePage() {
   const links = [
