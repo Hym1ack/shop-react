@@ -27,7 +27,7 @@
 }
 
 .productContainer {
-    width: 962px;
+    max-width: 962px;
     display: flex;
     flex-direction: column;
 }
@@ -36,4 +36,41 @@
 .newGoods {
     margin-top: 89px;
     margin-bottom: 60px;
+}
+
+.sliderTitle {
+    margin-bottom: 68px;
+}
+
+@media screen and (max-width: 1024px) {
+    .sliderTitle {
+        margin-bottom: 55px;
+    }
+}
+
+
+@media screen and (max-width: 991px) {
+    .sliderTitle {
+        margin-bottom: 50px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .sliderTitle {
+        margin-bottom: 40px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .sliderTitle {
+        margin-bottom: 35px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .sliderTitle {
+        margin-bottom: 28px;
+    }
 }

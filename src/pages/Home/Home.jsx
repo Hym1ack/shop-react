@@ -40,12 +40,16 @@ function Home() {
               key={slide.to}
               style={{
                 backgroundImage: `url(${sliderImg})`,
+                backgroundSize: "cover",
+                width: "100%",
               }}
             >
-              <h6 className={s.sliderTitle}>{slide.title}</h6>
-              <Link className={s.buttonLink} to={slide.to}>
-                Перейти к покупкам
-              </Link>
+              <div className={s.slide}>
+                <h6 className={s.sliderTitle}>{slide.title}</h6>
+                <Link className={s.buttonLink} to={slide.to}>
+                  Перейти к покупкам
+                </Link>
+              </div>
             </SwiperSlide>
           ))}
         </Slider>
@@ -55,7 +59,7 @@ function Home() {
         </div>
       </div>
       <div className={s.sales}>
-        <Slider title="Скидки" titleStyle={{ marginBottom: "34px" }} type={1}>
+        <Slider title="Скидки" titleStyle={s.saleTitle} type={1}>
           {recommendedProducts.map((product) => (
             <SwiperSlide key={product.id}>
               <ProductCard product={product} />
@@ -87,7 +91,7 @@ function Home() {
       <div className={s.sales}>
         <Slider
           title="Акции"
-          titleStyle={{ marginBottom: "34px" }}
+          titleStyle={s.saleTitle}
           type={1}
           slidesPerView={4}
         >

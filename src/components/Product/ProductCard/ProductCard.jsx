@@ -29,7 +29,7 @@ function ProductCard({ product }) {
         <p className={s.infoName}>{productName}</p>
       </div>
       <div className={s.buy}>
-        <div>
+        <div className={s.prices}>
           <p className={classesSale}>{newPrice || price} руб.</p>
           {newPrice && <p className={s.oldPrice}>{price} руб.</p>}
         </div>

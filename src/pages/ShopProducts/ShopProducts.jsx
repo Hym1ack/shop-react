@@ -38,11 +38,7 @@ function ShopProducts() {
           <Products />
         </div>
       </div>
-      <Slider
-        title="Рекомендации для вас"
-        type={1}
-        titleStyle={{ marginBottom: 68 }}
-      >
+      <Slider title="Рекомендации для вас" type={1} titleStyle={s.sliderTitle}>
         {recommendedProducts.map((product) => (
           <SwiperSlide key={product.id}>
             <ProductCard product={product} />
