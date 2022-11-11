@@ -1,0 +1,145 @@
+
+.deliveryTitle {
+    margin-bottom: 22px;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-transform: uppercase;
+}
+
+.deliveryWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 36px;
+
+    margin-bottom: 46px;
+}
+
+.deliveryTitleText {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    color: #FF0000;
+}
+
+.deliveryDescr {
+    max-width: 621px;
+    padding-bottom: 60px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+    position: relative;
+}
+
+.deliveryText {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.deliveryWarning {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.deliveryMap {
+    max-width: 633px;
+    width: 100%;
+
+}
+
+
+.mapTitle {
+    margin-top: 23px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    color: #FF0000;
+}
+
+@media screen and (max-width: 1200px) {
+    .deliveryWrapper {
+        gap: 10px;
+    }
+
+    .deliveryDescr {
+        max-width: 550px;
+    }
+
+    .deliveryText {
+        font-size: 18px;
+    }
+
+    .deliveryWarning {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+
+    .deliveryDescr {
+        width: 100%;
+        padding-bottom: 0;
+    }
+
+    .deliveryText {
+        font-size: 18px;
+    }
+
+    .deliveryWarning {
+        display: inline-block;
+        width: 100vw;
+        bottom: -25px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .deliveryWrapper {
+        flex-direction: column;
+    }
+
+    .deliveryDescr {
+        padding-bottom: 35px;
+    }
+
+    .deliveryTitle {
+        margin-bottom: 38px;
+        font-size: 22px;
+        line-height: 30px
+    }
+
+    .deliveryTitleText, .mapTitle {
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .deliveryTitleText {
+        margin-bottom: 11px;
+    }
+
+    .mapTitle {
+        margin-top: 58px;
+        margin-bottom: 15px;
+    }
+
+    .deliveryText {
+        margin-bottom: 25px;
+    }
+
+    .deliveryText, .deliveryWarning {
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
