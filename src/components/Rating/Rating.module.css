@@ -1,10 +1,9 @@
 .rating {
     display: flex;
-
+    justify-content: space-between;
     width: 100%;
-    height: 164px;
 
-    padding: 28px 24px 25px 63px;
+    padding: 28px 446px 25px 63px;
 
     background: #FFF8EB;
     border: 1px solid #FFE7B9;
@@ -14,7 +13,6 @@
 }
 
 .ratingText {
-    margin-right: 154px;
     position: relative;
 }
 
@@ -29,8 +27,8 @@
 }
 
 .text {
-    width: 353px;
-
+    max-width: 353px;
+    width: 100%;
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;
@@ -44,8 +42,9 @@
 }
 
 .stars {
-    width: 231px;
+    max-width: 231px;
     display: flex;
+    justify-content: space-between;
     gap: 19px;
 }
 
@@ -79,5 +78,128 @@
     position: absolute;
     top: -45px;
     right: 24px;
+}
+
+@media screen and (max-width: 1200px) {
+    .rating {
+        padding: 20px 325px 20px 25px;
+    }
+
+    .leaf {
+        left: -30px;
+    }
+
+    .img {
+        right: -12px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .title {
+        font-size: 30px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .submitButton {
+        font-size: 20px;
+    }
+
+
+}
+
+@media screen and (max-width: 991px) {
+    .ratingText {
+        width: 100%;
+    }
+
+    .rating {
+        padding-right: 170px;
+    }
+
+    .img {
+        width: 200px;
+        height: 200px;
+
+        top: 23px;
+        right: -20px;
+    }
+
+    .stars {
+        width: 200px;
+        gap: 12px;
+    }
+
+    .starButton img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .submitButton {
+        padding: 6px 32px;
+        font-size: 17px;
+        line-height: 20px;
+    }
+
+    .leaf {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .rating {
+        padding: 20px 14px 32px 19px;
+        flex-direction: column;
+
+    }
+
+    .img {
+        overflow: hidden;
+        top: 100px;
+        right: 0;
+        width: 163px;
+        height: 153px;
+    }
+
+    .submitButton {
+        font-size: 14px;
+    }
+
+    .starsBlock {
+        padding-right: 30px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+
+    .title {
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .text {
+        font-size: 15px;
+        line-height: 21px;
+    }
+
+    .img {
+        top: 114px;
+        right: -44px;
+    }
+
+    .starsBlock {
+        margin: 0;
+        padding: 0;
+    }
+
+    .stars {
+        width: 190px;
+        gap: 6px;
+    }
 }
 

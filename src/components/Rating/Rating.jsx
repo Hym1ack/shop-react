@@ -6,8 +6,19 @@ import star from "../../assets/images/star.png";
 import starActive from "../../assets/images/starActive.png";
 
 function Rating() {
-  const [rating, setRating] = useState(2);
+  const [rating, setRating] = useState(3);
   const maxRating = [1, 2, 3, 4, 5];
+
+  const starsElements = maxRating.map((key, i) => (
+    <button
+      className={s.starButton}
+      key={key}
+      type="button"
+      onClick={() => setRating(i + 1)}
+    >
+      <img src={i < rating ? starActive : star} alt="star" />
+    </button>
+  ));
 
   return (
     <div className={s.rating}>
@@ -18,19 +29,8 @@ function Rating() {
         </p>
         <img className={s.leaf} src={imageLeaf} alt="leaf" />
       </div>
-      <div>
-        <div className={s.stars}>
-          {maxRating.map((key, i) => (
-            <button
-              className={s.starButton}
-              key={key}
-              type="button"
-              onClick={() => setRating(i + 1)}
-            >
-              <img src={i < rating ? starActive : star} alt="" />
-            </button>
-          ))}
-        </div>
+      <div className={s.starsBlock}>
+        <div className={s.stars}>{starsElements}</div>
         <button className={s.submitButton} type="submit">
           Оставить отзыв
         </button>
