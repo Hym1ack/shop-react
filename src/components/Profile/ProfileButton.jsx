@@ -1,8 +1,8 @@
 import { useState } from "react";
 import s from "./ProfileButton.module.css";
-import LoginModal from "./ProfileLogin/LoginModal";
+import LoginModal from "../ProfileLogin/LoginModal";
 import { useAuth } from "../../hooks/useAuth";
-import UserModal from "./UserModal/UserModal";
+import UserModal from "../UserModal/UserModal";
 import { ReactComponent as UserIcon } from "../../assets/images/header/userIcon.svg";
 
 function ProfileButton() {

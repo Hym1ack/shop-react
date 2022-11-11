@@ -11,9 +11,9 @@ import { auth } from "./firebase";
 import { login } from "./redux/userSlice";
 import { RequireAuth } from "./hoc/RequireAuth";
 import ProfilePage from "./pages/Profile/ProfilePage";
-import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
-import ProfileHistory from "./components/Profile/ProfileHistory/ProfileHistory";
-import ProfileFavourite from "./components/Profile/ProfileFavourite/ProfileFavourite";
+import ProfileSettings from "./components/ProfileSettings/ProfileSettings";
+import ProfileHistory from "./components/ProfileHistory/ProfileHistory";
+import ProfileFavourite from "./components/ProfileFavourite/ProfileFavourite";
 import Home from "./pages/Home/Home";
 
 function App() {

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Modal from "../../Modal/Modal";
+import Modal from "../Modal/Modal";
 
 import s from "./ProductModal.module.css";
 import ProductImages from "../ProductImages/ProductImages";

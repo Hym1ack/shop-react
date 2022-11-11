@@ -1,10 +1,13 @@
-import s from "../ProductModal/ProductModal.module.css";
-import BuyButton from "../../UiKit/BuyButton";
-import Favourite from "../../UiKit/Favourite";
+import s from "./ProductInfo.module.css";
+import BuyButton from "../UiKit/BuyButton";
+import Favourite from "../UiKit/Favourite";
 
 function ProductInfo({ product }) {
   const { availableCount, price, newPrice, productName, weight, information } =
     product;
+
+  const { compound, nutritional, expirationDate, storage, packing } =
+    information;
 
   const weightText = weight < 1 ? `${weight} г.` : `${weight} кг.`;
 
@@ -26,17 +29,13 @@ function ProductInfo({ product }) {
       </div>
       {information && (
         <div className={s.productDetails}>
-          <p className={s.detailsText}>Состав: {information.compound}</p>
+          <p className={s.detailsText}>Состав: {compound}</p>
           <p className={s.detailsText}>
-            Пищевая ценность на 100 г: {information.nutritional}
+            Пищевая ценность на 100 г: {nutritional}
           </p>
-          <p className={s.detailsText}>
-            Срок хранения: {information.expirationDate}
-          </p>
-          <p className={s.detailsText}>
-            Условия хранения: {information.storage}
-          </p>
-          <p className={s.detailsText}>Упаковка: {information.packing}</p>
+          <p className={s.detailsText}>Срок хранения: {expirationDate}</p>
+          <p className={s.detailsText}>Условия хранения: {storage}</p>
+          <p className={s.detailsText}>Упаковка: {packing}</p>
         </div>
       )}
     </div>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import s from "./ProductCard.module.css";
 import ProductModal from "../ProductModal/ProductModal";
-import BuyButton from "../../UiKit/BuyButton";
-import Favourite from "../../UiKit/Favourite";
+import BuyButton from "../UiKit/BuyButton";
+import Favourite from "../UiKit/Favourite";
 
 function ProductCard({ product }) {
   const [modalProduct, setModalProduct] = useState(false);

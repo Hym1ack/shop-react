@@ -1,0 +1,26 @@
+.card {
+    display: flex;
+    gap: 74px;
+}
+
+
+.info {
+    width: 617px;
+}
+
+.moreInfo {
+    display: block;
+    margin-top: 35px;
+    margin-bottom: 65px;
+    padding: 6px 13px 8px 15px;
+
+    background: #FFF8EB;
+    border: 1px solid #FFE7B9;
+    border-radius: 12px;
+
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    color: #DA9000;
+}

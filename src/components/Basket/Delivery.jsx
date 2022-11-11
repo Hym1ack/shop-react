@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import s from "./Delivery.module.css";
 import { setNewPrice } from "../../redux/cartSlice";
-import DeliveryModal from "./DeliveryModal/DeliveryModal";
+import DeliveryModal from "../DeliveryModal/DeliveryModal";
 import Checkbox from "../UiKit/Checkbox";
 
 function Delivery() {

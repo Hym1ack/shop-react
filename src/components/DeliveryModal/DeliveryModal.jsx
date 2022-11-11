@@ -1,10 +1,10 @@
 import { useState } from "react";
 import s from "./DeliveryModal.module.css";
-import Modal from "../../Modal/Modal";
+import Modal from "../Modal/Modal";
 
-import clearX from "../../../assets/images/x.svg";
-import userAddress from "../../../assets/images/popups/userAddress.svg";
-import userDeleteAddress from "../../../assets/images/popups/userDeleteAddress.svg";
+import clearX from "../../assets/images/x.svg";
+import userAddress from "../../assets/images/popups/userAddress.svg";
+import userDeleteAddress from "../../assets/images/popups/userDeleteAddress.svg";
 
 function DeliveryModal({ modalOpen, setModalOpen }) {
   const [delivery, setDelivery] = useState(true);
@@ -93,7 +93,7 @@ function DeliveryModal({ modalOpen, setModalOpen }) {
         <div className={s.map}>
           <iframe
             title="mapYandex"
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3A342f343fa73ff0e654afafe2e6efe36e54a6fead8a93cfc2816f253cf25082e5&amp;source=constructor"
+            src="src/components/DeliveryModal/DeliveryModal?um=constructor%3A342f343fa73ff0e654afafe2e6efe36e54a6fead8a93cfc2816f253cf25082e5&amp;source=constructor"
             width="700"
             height="720"
             frameBorder="0"

@@ -1,12 +1,12 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import procentImg from "../../../assets/images/user/login-procent.svg";
-import discountImg from "../../../assets/images/user/login-discount.svg";
-import deliveryImg from "../../../assets/images/user/login-delivery.svg";
+import procentImg from "../../assets/images/user/login-procent.svg";
+import discountImg from "../../assets/images/user/login-discount.svg";
+import deliveryImg from "../../assets/images/user/login-delivery.svg";
 
 import s from "./LoginModal.module.css";
-import { login } from "../../../redux/userSlice";
-import { auth } from "../../../firebase";
+import { login } from "../../redux/userSlice";
+import { auth } from "../../firebase";
 
 function LoginModal() {
   const dispatch = useDispatch();

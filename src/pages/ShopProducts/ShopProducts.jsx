@@ -9,7 +9,7 @@ import { fetchRecommendedProducts } from "../../redux/shopSlice";
 import Products from "../../components/Product/Products";
 import CategoriesContainer from "../../components/Categories/CategoriesContainer";
 import Slider from "../../components/Slider/Slider";
-import ProductCard from "../../components/Product/ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import NewGoods from "../../components/NewGoods/NewGoods";
 import { useCatalog } from "../../hooks/useCatalog";
 

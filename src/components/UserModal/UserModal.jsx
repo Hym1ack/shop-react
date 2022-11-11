@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
 import s from "./UserModal.module.css";
-import { logout } from "../../../redux/userSlice";
-import { auth } from "../../../firebase";
+import { logout } from "../../redux/userSlice";
+import { auth } from "../../firebase";
 
 function UserModal({ userName }) {
   const dispatch = useDispatch();

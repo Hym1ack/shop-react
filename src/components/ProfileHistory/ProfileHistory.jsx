@@ -1,6 +1,6 @@
 import s from "./ProfileHistory.module.css";
-import OrderCard from "../../OrderCard/OrderCard";
-import { ordersData } from "../../../database/localeData";
+import OrderCard from "../OrderCard/OrderCard";
+import { ordersData } from "../../database/localeData";
 
 function ProfileHistory() {
   return (

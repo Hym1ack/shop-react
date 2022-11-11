@@ -4,7 +4,7 @@ import s from "./CartPage.module.css";
 import Basket from "../../components/Basket/Basket";
 import Delivery from "../../components/Basket/Delivery";
 import Slider from "../../components/Slider/Slider";
-import ProductCard from "../../components/Product/ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 function CartPage() {
   const elements = useSelector((state) => state.shop.recommendedProducts);

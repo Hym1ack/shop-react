@@ -3,12 +3,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SwiperSlide } from "swiper/react";
 import { fetchProductById } from "../../redux/shopSlice";
-import ProductImages from "../../components/Product/ProductImages/ProductImages";
-import ProductInfo from "../../components/Product/ProductInfo/ProductInfo";
+import ProductImages from "../../components/ProductImages/ProductImages";
+import ProductInfo from "../../components/ProductInfo/ProductInfo";
 import s from "./ProductPage.module.css";
 import Slider from "../../components/Slider/Slider";
-import ProductCard from "../../components/Product/ProductCard/ProductCard";
-import { addToCart } from "../../redux/cartSlice";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import NewGoods from "../../components/NewGoods/NewGoods";
 
 function ProductPage() {
@@ -44,11 +43,7 @@ function ProductPage() {
       >
         {recommendedProducts.map((rec) => (
           <SwiperSlide key={rec.id}>
-            <ProductCard
-              product={rec}
-              dispatch={dispatch}
-              addToCart={addToCart}
-            />
+            <ProductCard product={rec} />
           </SwiperSlide>
         ))}
       </Slider>
