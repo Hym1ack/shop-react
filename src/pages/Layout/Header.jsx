@@ -8,13 +8,14 @@ import AppLink from "../../components/UiKit/AppLink";
 import { ReactComponent as FavouriteLogo } from "../../assets/images/header/favourites.svg";
 import Search from "../../components/Search/Search";
 import Cart from "../../components/Cart/Cart";
+import Container from "../../components/UiKit/Container";
 
 function Header() {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   return (
     <header className={s.header}>
-      <div className="container">
+      <Container>
         <div className={s.headerTop}>
           <Link to="/">
             <AppLogo />
@@ -31,7 +32,7 @@ function Header() {
           )}
         </div>
         <Navigation />
-      </div>
+      </Container>
     </header>
   );
 }

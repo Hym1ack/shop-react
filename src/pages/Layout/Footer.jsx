@@ -4,11 +4,12 @@ import { ReactComponent as VisaMastercard } from "../../assets/images/footer/Vis
 import AppLink from "../../components/UiKit/AppLink";
 import SubscribeNews from "../../components/SubscribeNews/SubscribeNews";
 import { footerLinks } from "../../database/footerData";
+import Container from "../../components/UiKit/Container";
 
 function Footer() {
   return (
     <footer className={s.footer}>
-      <div className="container">
+      <Container>
         <div className={s.information}>
           {footerLinks.map((element) => (
             <div className={element.class} key={element.class}>
@@ -49,7 +50,7 @@ function Footer() {
           <p>Информация на сайте не является публичной офертой</p>
           <VisaMastercard className={s.footerVisa} />
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }
