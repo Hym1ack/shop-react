@@ -29,7 +29,7 @@ function DeliveryInfo() {
       <div className={s.deliveryWrapper}>
         <div className={s.deliveryDescr}>
           {descrBlocks.map((obj) => (
-            <div>
+            <div key={obj.descr}>
               <h6 className={s.deliveryTitleText}>{obj.title}</h6>
               <p className={s.deliveryText}>{obj.descr}</p>
             </div>

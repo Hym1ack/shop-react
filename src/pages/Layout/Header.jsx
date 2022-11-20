@@ -15,7 +15,7 @@ function Header() {
 
   return (
     <header className={s.header}>
-      <Container>
+      <Container className={s.container}>
         <div className={s.headerTop}>
           <Link to="/">
             <AppLogo />

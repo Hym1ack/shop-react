@@ -117,7 +117,8 @@
 }
 
 .inputLink {
-    width: 381px;
+    max-width: 381px;
+    width: 100%;
     padding: 5px 20px 4px;
 
     background: #FFFFFF;
@@ -129,3 +130,4 @@
     line-height: 27px;
     color: #C4B4B4;
 }
+
