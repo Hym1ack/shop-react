@@ -21,6 +21,65 @@
     color: #6B6B6B;
 }
 
+.searchClean {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+
+    cursor: pointer;
+}
+
+.searched {
+    position: absolute;
+    top: 50px;
+    left: 0;
+
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+
+    z-index: 3;
+}
+
+.product {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+.product:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #DADADA;
+}
+
+
+.product:last-child:after {
+    height: 0;
+}
+
+.productImage {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.productName {
+    padding: 0 5px;
+    width: 300px;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: #000000;
+}
+
+
 .iconSearch {
     position: absolute;
     right: 14px;
@@ -42,6 +101,26 @@
     background: rgba(255, 169, 0, 0.7);
     border-radius: 11px;
 }
+
+.searchClean,
+.iconSearch,
+.productsActive {
+    animation: showProducts .3s;
+}
+
+.productsExit {
+    animation: showProducts .3s reverse;
+}
+
+@keyframes showProducts {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 
 @media screen and (max-width: 768px) {
     .searchBlock {

@@ -1,6 +1,29 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, limit, query, where } from "firebase/firestore";
 import { firestoreDatabase } from "../firebase";
+
+export const fetchProductsByName = createAsyncThunk(
+  "shop/fetchProductsByName",
+  async (name) => {
+    const products = [];
+
+    const docRef = collection(firestoreDatabase, "products");
+
+    const q = query(
+      docRef,
+      where("productName", ">=", name),
+      where("productName", "<=", `${name}\uf8ff`),
+      limit(3)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    return products;
+  }
+);
 
 export const fetchProducts = createAsyncThunk(
   "shop/fetchProducts",
@@ -100,6 +123,7 @@ export const shopSlice = createSlice({
     title: "",
     recommendedProducts: [],
     favoritesProducts: [],
+    searchedProducts: [],
     sort: { value: "rating", label: "По популярности" },
   },
   reducers: {
@@ -120,6 +144,9 @@ export const shopSlice = createSlice({
     },
     clearRecommended(state) {
       state.recommendedProducts = [];
+    },
+    clearSearchedProducts(state) {
+      state.searchedProducts = [];
     },
     setSort(state, action) {
       state.sort = action.payload;
@@ -148,6 +175,9 @@ export const shopSlice = createSlice({
     [fetchFavouritesProducts.fulfilled]: (state, action) => {
       state.favoritesProducts = action.payload;
     },
+    [fetchProductsByName.fulfilled]: (state, action) => {
+      state.searchedProducts = action.payload;
+    },
   },
 });
 
@@ -156,6 +186,7 @@ export const {
   clearCategories,
   clearFavorites,
   clearRecommended,
+  clearSearchedProducts,
   setSort,
 } = shopSlice.actions;
 export default shopSlice.reducer;
