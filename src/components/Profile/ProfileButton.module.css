@@ -35,3 +35,22 @@
 .btnImg:hover path {
     fill: #FFA900;
 }
+
+.tooltipActive {
+    animation: showTooltip .3s forwards;
+}
+
+.tooltipExit {
+    animation: showTooltip .3s reverse;
+}
+
+@keyframes showTooltip {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -20,7 +20,7 @@
     position: relative;
 }
 
-.sortActiveImg {
+.sortImage {
     position: absolute;
     top: 12px;
     right: 6px;
@@ -57,4 +57,23 @@
 .sortItem:hover {
     background-color: #fdf0d4;
     border-radius: 16px;
+}
+
+.sortEnter {
+    animation: showSort .5s forwards;
+}
+
+.sortExit {
+    animation: showSort .5s reverse;
+}
+
+@keyframes showSort {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { CSSTransition } from "react-transition-group";
 import s from "./Sort.module.css";
 import { setSort } from "../../redux/shopSlice";
+import { ReactComponent as ArrowIcon } from "../../assets/images/shop/arrow.svg";
 
 const options = [
   { value: "rating", label: "По популярности" },
@@ -44,21 +46,21 @@ function Sort() {
         className={s.sortActive}
       >
         {sortLabel}
-        <svg
-          className={s.sortActiveImg}
-          width="7"
-          height="12"
-          viewBox="0 0 7 12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1.69335 0.289794L6.67087 5.26732C7.05714 5.65559 7.05714 6.28273 6.67087 6.671L1.69335 11.6485C1.32104 11.9681 0.770515 11.9681 0.39821 11.6485C-0.0189271 11.2911 -0.0676747 10.662 0.289721 10.2449L4.56039 5.97413L0.28967 1.69347C-0.0965921 1.3052 -0.0965921 0.678064 0.28967 0.289794C0.67794 -0.0964679 1.30513 -0.0964679 1.69335 0.289794Z"
-            fill="black"
-          />
-        </svg>
+        <ArrowIcon
+          className={`${s.sortImage} ${isOpen && s.sortImageActive}`}
+        />
       </button>
-      {isOpen && (
+
+      <CSSTransition
+        in={isOpen}
+        timeout={300}
+        classNames={{
+          enterActive: s.sortEnter,
+          exitActive: s.sortExit,
+        }}
+        mountOnEnter
+        unmountOnExit
+      >
         <div className={s.sortItems}>
           {options.map((option) => (
             <button
@@ -71,7 +73,7 @@ function Sort() {
             </button>
           ))}
         </div>
-      )}
+      </CSSTransition>
     </div>
   );
 }
