@@ -2,6 +2,9 @@
     display: flex;
 }
 
+.navSlider {
+    margin-left: 0;
+}
 
 .slide {
     flex-shrink: 1;
