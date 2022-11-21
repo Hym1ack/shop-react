@@ -18,7 +18,7 @@ function Header() {
       <Container className={s.container}>
         <div className={s.headerTop}>
           <Link to="/">
-            <AppLogo />
+            <AppLogo className={s.logo} />
           </Link>
           <Search />
           {!isMobile && (
