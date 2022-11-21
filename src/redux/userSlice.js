@@ -2,10 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { firestoreDatabase } from "../firebase";
 
-const favProducts = localStorage.getItem("favoritedProducts")
-  ? JSON.parse(localStorage.getItem("favoritedProducts"))
-  : [];
-
 const initialState = {
   userName: null,
   userId: null,
@@ -13,16 +9,13 @@ const initialState = {
   birthdayDate: null,
   email: null,
   orders: [],
-  favoritesProductsId: favProducts,
+  favoritesProductsId: [],
 };
 
 const createUserDatabase = async (userName, userId, email) => {
   const data = await doc(firestoreDatabase, "users", userId);
 
-  const docs = await getDoc(data);
-  const user = docs.data();
-
-  await setDoc(data, {
+  const newUser = {
     userName,
     userId,
     phoneNumber: null,
@@ -30,9 +23,11 @@ const createUserDatabase = async (userName, userId, email) => {
     email,
     orders: [],
     favoritesProductsId: [],
-  });
+  };
 
-  return user;
+  await setDoc(data, newUser);
+
+  return newUser;
 };
 
 const addToFavorites = async (userId, products) => {
@@ -45,15 +40,13 @@ const addToFavorites = async (userId, products) => {
 
 export const fetchUserById = createAsyncThunk(
   "user/fetchUserById",
-  async (displayName, email, phoneNumber, uid) => {
+  async ({ displayName, email, uid }) => {
     const data = await doc(firestoreDatabase, "users", uid);
-
     const docs = await getDoc(data);
     const user = docs.data();
 
     if (!user) {
-      await createUserDatabase(displayName, uid, email);
-      return "";
+      return createUserDatabase(displayName, uid, email);
     }
     return user;
   }
@@ -63,16 +56,6 @@ export const cartSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login(state, action) {
-      const { displayName, email, phoneNumber, uid } = action.payload;
-
-      state.userName = displayName;
-      state.userId = uid;
-      state.phoneNumber = phoneNumber;
-      state.email = email;
-
-      fetchUserById(displayName, email, phoneNumber, uid);
-    },
     toggleFavourite(state, action) {
       if (state.favoritesProductsId.includes(action.payload)) {
         state.favoritesProductsId = state.favoritesProductsId.filter(
@@ -81,10 +64,6 @@ export const cartSlice = createSlice({
       } else {
         state.favoritesProductsId.push(action.payload);
       }
-      localStorage.setItem(
-        "favoritedProducts",
-        JSON.stringify([...state.favoritesProductsId])
-      );
 
       addToFavorites(state.userId, [...state.favoritesProductsId]);
     },
@@ -121,5 +100,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { login, logout, toggleFavourite } = cartSlice.actions;
+export const { logout, toggleFavourite } = cartSlice.actions;
 export default cartSlice.reducer;

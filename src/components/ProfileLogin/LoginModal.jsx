@@ -5,7 +5,7 @@ import discountImg from "../../assets/images/user/login-discount.svg";
 import deliveryImg from "../../assets/images/user/login-delivery.svg";
 
 import s from "./LoginModal.module.css";
-import { login } from "../../redux/userSlice";
+import { fetchUserById } from "../../redux/userSlice";
 import { auth } from "../../firebase";
 
 function LoginModal() {
@@ -15,15 +15,8 @@ function LoginModal() {
     const provider = new GoogleAuthProvider();
     const { user } = await signInWithPopup(auth, provider);
 
-    const { displayName, email, uid, phoneNumber } = user;
-    dispatch(
-      login({
-        displayName,
-        email,
-        uid,
-        phoneNumber,
-      })
-    );
+    const { displayName, email, uid } = user;
+    dispatch(fetchUserById(displayName, email, uid));
   };
 
   return (

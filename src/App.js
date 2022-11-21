@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import ProductPage from "./pages/Product/ProductPage";
 import Products from "./components/Product/Products";
 import { auth } from "./firebase";
-import { login } from "./redux/userSlice";
+import { fetchUserById } from "./redux/userSlice";
 import { RequireAuth } from "./hoc/RequireAuth";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import ProfileSettings from "./components/ProfileSettings/ProfileSettings";
@@ -22,9 +22,9 @@ function App() {
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser === null) return null;
 
-    const { displayName, email, phoneNumber, uid } = currentUser;
+    const { displayName, email, uid } = currentUser;
 
-    return dispatch(login({ displayName, email, phoneNumber, uid }));
+    return dispatch(fetchUserById({ displayName, email, uid }));
   });
 
   return (
