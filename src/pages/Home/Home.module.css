@@ -56,13 +56,19 @@
     margin-top: 114px;
 }
 
+
 .saleTitle {
     margin-bottom: 34px;
 }
 
 
-.itemTitle {
+/*navigation pages */
+
+.sliderLinks {
     margin-top: 130px;
+}
+
+.itemTitle {
     margin-bottom: 43px;
 
     text-transform: uppercase;
@@ -72,16 +78,21 @@
     color: #000000;
 }
 
-.items {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 28px;
+
+.sliderWrapper {
+    overflow: visible;
+}
+
+.linkSlide {
+    max-width: 304px;
+    width: 100%;
+    height: 304px;
 }
 
 .link {
     display: inline-block;
-    width: 304px;
-    height: 304px;
+    width: 100%;
+    height: 100%;
 
     border: 1px solid;
     border-radius: 58px;
@@ -96,10 +107,13 @@
 }
 
 .text {
-    width: 225px;
+    max-width: 225px;
+    width: 100%;
+    height: 82px;
 
-    margin-top: 35px;
-    margin-left: 39px;
+    position: absolute;
+    top: 35px;
+    left: 20px;
 
     font-weight: 600;
     font-size: 30px;
@@ -110,12 +124,28 @@
 
 .image {
     position: absolute;
+    width: 100%;
+    height: 100%;
     bottom: 0;
     right: 0;
+    object-fit: contain;
+}
+
+/*banners */
+.banners {
+    display: flex;
 }
 
 .banner {
+    margin-right: 0;
     padding: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-width: 310px;
+    min-width: 221px;
+    width: 100%;
+
+    border-radius: 30px;
     height: 449px;
 }
 
@@ -142,57 +172,9 @@
     line-height: 22px;
 }
 
+
 .delivery {
     margin-top: 94px;
-}
-
-.deliveryTitle {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 44px;
-}
-
-.deliveryWrapper {
-    display: flex;
-    justify-content: space-between;
-
-    margin-bottom: 46px;
-}
-
-
-.deliveryTitleText {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 27px;
-    color: #FF0000;
-}
-
-.deliveryDescr {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.deliveryText {
-    width: 630px;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 27px;
-}
-
-
-.deliveryMap {
-    width: 633px;
-}
-
-
-.mapTitle {
-    margin-bottom: 20px;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 27px;
-    color: #FF0000;
 }
 
 .promoBlock {
@@ -215,9 +197,39 @@
         justify-content: space-evenly;
         width: 100%;
     }
+
+    .sales {
+        margin-top: 100px;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    .sliderLinks {
+        margin-top: 120px;
+    }
+
+    .banner {
+        padding: 22px;
+    }
+
+    .bannerText {
+        font-size: 21px;
+        line-height: 30px;
+    }
 }
 
 @media screen and (max-width: 991px) {
+
+    .sliderLinks {
+        margin-top: 110px;
+    }
+
+    .itemTitle {
+        margin-bottom: 35px;
+    }
+
     .sliderTitle {
         width: 400px;
         padding-top: 45px;
@@ -234,13 +246,76 @@
         margin-bottom: 60px;
     }
 
+    .linkSlide {
+        width: 250px;
+        height: 250px;
+    }
+
+    .link {
+        border-radius: 35px;
+    }
+
+    .text {
+        max-width: 200px;
+
+        top: 30px;
+        left: 25px;
+
+        font-size: 24px;
+        line-height: 28px;
+    }
+
     .img {
         max-width: 49%;
         height: auto;
     }
+
+    .top :global .sliderContainer {
+        margin-left: -10px;
+    }
+
+
+    .sales {
+        margin-top: 80px;
+    }
+
+    .bannerSlide {
+        flex-shrink: 1;
+        width: auto !important;
+    }
+
+    .promoBlock {
+        margin-top: 70px;
+        margin-bottom: 70px;
+    }
+
+    .banner {
+        height: 350px;
+    }
+
+    .bannerText {
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .bannerCoupon {
+        margin-top: 6px;
+        padding: 6px 7px 6px 12px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .delivery {
+        margin-top: 80px;
+    }
 }
 
 @media screen and (max-width: 768px) {
+
+    .sliderLinks {
+        margin-top: 100px;
+    }
+
     .sliderTitle {
         padding-top: 42px;
         padding-left: 20px;
@@ -249,9 +324,36 @@
         line-height: 32px;
     }
 
+    .itemTitle {
+        margin-bottom: 25px;
+
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .linkSlide {
+        width: 200px;
+        height: 200px;
+    }
+
+    .link {
+        border-radius: 30px;
+    }
+
+    .text {
+        max-width: 150px;
+
+        top: 20px;
+        left: 20px;
+
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+
     .buttonLink {
         margin-bottom: 30px;
-        
+
         font-size: 18px;
         line-height: 18px;
     }
@@ -260,16 +362,65 @@
         margin-top: 8px;
     }
 
+    .sales {
+        margin-top: 60px;
+    }
 
+    .saleTitle {
+        margin-bottom: 25px;
+        font-size: 26px;
+        line-height: 32px;
+    }
+
+    .delivery {
+        margin-top: 70px;
+    }
+
+    .promoBlock {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
 }
 
 @media screen and (max-width: 480px) {
+
+    .sliderLinks {
+        margin-top: 80px;
+    }
+
+    .itemTitle {
+        margin-bottom: 15px;
+
+        font-size: 24px;
+        line-height: 32px;
+    }
+
     .sliderTitle {
         width: 230px;
         font-weight: 700;
         font-size: 18px;
         line-height: 22px;
         letter-spacing: -0.02em;
+    }
+
+    .linkSlide {
+        width: 131px;
+        height: 131px;
+    }
+
+
+    .link {
+        border-radius: 25px;
+    }
+
+    .text {
+        max-width: 100px;
+
+        top: 15px;
+        left: 15px;
+
+        font-size: 13.5px;
+        line-height: 18px;
     }
 
     .buttonLink {
@@ -281,4 +432,62 @@
         border: 1px solid #FFFFFF;
         border-radius: 35px;
     }
+
+
+    .bannerText {
+        margin-left: 0;
+    }
+
+
+    .bannerCoupon {
+        margin-left: 0;
+        font-size: 13px;
+        line-height: 16px;
+    }
+
+    .delivery {
+        margin-top: 60px;
+    }
+
+    .promoBlock {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .itemTitle {
+        margin-bottom: 12px;
+
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .sales {
+        margin-top: 27px;
+    }
+
+    .saleTitle {
+        margin-bottom: 25px;
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .banner {
+        height: 321px;
+    }
+
+    .bannerCoupon {
+        font-size: 11px;
+    }
+
+    .delivery {
+        margin-top: 50px;
+    }
+
+    .promoBlock {
+        margin-top: 0;
+        margin-bottom: 41px;
+    }
+
 }

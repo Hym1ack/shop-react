@@ -148,6 +148,11 @@ export const banners = [
     promo: "trio1500",
     bgImage: banner4,
   },
+  {
+    title: "Скидка на товар «Чистая линия»",
+    coupon: "line",
+    bgImage: banner3,
+  },
 ];
 
 export const ordersData = [

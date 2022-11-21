@@ -2,17 +2,19 @@ import { SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import AppLink from "../../components/UiKit/AppLink";
 import cashbackImg from "../../assets/images/main/cashbackButton.png";
 import reviewImg from "../../assets/images/main/reviewButton.png";
 import sliderImg from "../../assets/images/main/slider1.png";
-import deliveryMap from "../../assets/images/main/deliveryMap.png";
 
 import s from "./Home.module.css";
 import Slider from "../../components/Slider/Slider";
 import { banners, localeData, slidesHome } from "../../database/localeData";
+import DeliveryInfo from "../../components/DeliveryInfo/DeliveryInfo";
 import Promo from "../../components/Promo/Promo";
 import Rating from "../../components/Rating/Rating";
-import ProductCard from "../../components/Product/ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
+
 import {
   clearRecommended,
   fetchRecommendedProducts,
@@ -34,7 +36,7 @@ function Home() {
   return (
     <div className={s.home}>
       <div className={s.top}>
-        <Slider type={2}>
+        <Slider type="main">
           {slidesHome.map((slide) => (
             <SwiperSlide
               key={slide.to}
@@ -46,9 +48,9 @@ function Home() {
             >
               <div className={s.slide}>
                 <h6 className={s.sliderTitle}>{slide.title}</h6>
-                <Link className={s.buttonLink} to={slide.to}>
+                <AppLink className={s.buttonLink} to={slide.to}>
                   Перейти к покупкам
-                </Link>
+                </AppLink>
               </div>
             </SwiperSlide>
           ))}
@@ -58,8 +60,14 @@ function Home() {
           <img className={s.img} src={reviewImg} alt="review" />
         </div>
       </div>
+
       <div className={s.sales}>
-        <Slider title="Скидки" titleStyle={s.saleTitle} type={1}>
+        <Slider
+          title="Скидки"
+          titleStyle={s.saleTitle}
+          type="items"
+          paginationClass="productsPagination"
+        >
           {recommendedProducts.map((product) => (
             <SwiperSlide key={product.id}>
               <ProductCard product={product} />
@@ -67,102 +75,71 @@ function Home() {
           ))}
         </Slider>
       </div>
-      {orderLinks.map((obj) => (
-        <div key={obj.title}>
-          <h4 className={s.itemTitle}>{obj.title}</h4>
-          <div className={s.items}>
-            {obj.items.map((item) => (
-              <Link
-                className={s.link}
-                style={{
-                  backgroundColor: obj.backgroundColor,
-                  borderColor: obj.borderColor,
-                }}
-                to={`shop/${item.to}`}
-                key={item.label}
-              >
-                <h5 className={s.text}>{item.label}</h5>
-                <img className={s.image} src={item.image} alt="" />
-              </Link>
+
+      {orderLinks.map((linkObj) => (
+        <div className={s.sliderLinks} key={linkObj.title}>
+          <Slider
+            type="links"
+            title={linkObj.title}
+            titleStyle={s.itemTitle}
+            isGrid={linkObj.items.length > 4}
+            className={s.sliderWrapper}
+          >
+            {linkObj.items.map((item) => (
+              <SwiperSlide key={item.label} className={s.linkSlide}>
+                <Link
+                  className={s.link}
+                  key={item.title}
+                  style={{
+                    borderColor: linkObj.borderColor,
+                    backgroundColor: linkObj.backgroundColor,
+                  }}
+                  to={`shop/${item.to}`}
+                >
+                  <h5 className={s.text}>{item.label}</h5>
+                  <img className={s.image} src={item.image} alt="" />
+                </Link>
+              </SwiperSlide>
             ))}
-          </div>
+          </Slider>
         </div>
       ))}
+
       <div className={s.sales}>
         <Slider
+          type="banners"
+          paginationClass="bannersPag"
           title="Акции"
           titleStyle={s.saleTitle}
-          type={1}
-          slidesPerView={4}
         >
-          {banners.map((banner) => (
-            <SwiperSlide key={banner.title}>
-              <div
-                className={s.banner}
-                style={{
-                  backgroundImage: `url(${banner.bgImage})`,
-                  height: "449px",
-                }}
-              >
-                <h6 className={s.bannerText}>{banner.title}</h6>
-                {banner.coupon && (
-                  <p className={`${s.bannerCoupon} swiper-no-swiping`}>
-                    {banner.coupon}
-                  </p>
-                )}
-              </div>
-            </SwiperSlide>
-          ))}
+          <div className={s.banners}>
+            {banners.map((banner) => (
+              <SwiperSlide key={banner.title} className={s.bannerSlide}>
+                <div
+                  className={s.banner}
+                  style={{
+                    backgroundImage: `url(${banner.bgImage})`,
+                  }}
+                >
+                  <h6 className={s.bannerText}>{banner.title}</h6>
+                  {banner.coupon && (
+                    <p className={`${s.bannerCoupon} swiper-no-swiping`}>
+                      {banner.coupon}
+                    </p>
+                  )}
+                </div>
+              </SwiperSlide>
+            ))}
+          </div>
         </Slider>
       </div>
+
       <div className={s.delivery}>
-        <h4 className={s.deliveryTitle}>ДОСТАВКА И ОПЛАТА</h4>
-        <div className={s.deliveryWrapper}>
-          <div className={s.deliveryDescr}>
-            <div>
-              <h6 className={s.deliveryTitleText}>Зоны доставки</h6>
-              <p className={s.deliveryText}>
-                Доставка осуществляется в районе ЖК «Ильинские Луга»
-              </p>
-            </div>
-            <div>
-              <h6 className={s.deliveryTitleText}>25 минут</h6>
-              <p className={s.deliveryText}>
-                Доставка 25 минут. Принимаем заказы с 7:00 до 23:00
-              </p>
-            </div>
-
-            <div>
-              <h6 className={s.deliveryTitleText}>1000 р</h6>
-              <p className={s.deliveryText}>
-                Минимальная сумма бесплатной доставки с учетом скидок. Инаыче
-                стоимость доставке 250 руб
-              </p>
-            </div>
-
-            <div>
-              <h6 className={s.deliveryTitleText}>Зоны доставки</h6>
-              <p className={s.deliveryText}>
-                При оформлении заказа вы можете выбрать удобный для вас спобос
-                рассчета
-              </p>
-            </div>
-
-            <p className={s.deliveryText}>
-              Изображения продуктов могут отличаться от продуктов в заказе.
-            </p>
-          </div>
-          <div className={s.deliveryMap}>
-            <h6 className={s.mapTitle}>Карта доставки</h6>
-            <img src={deliveryMap} alt="map" />
-          </div>
-        </div>
+        <DeliveryInfo />
       </div>
-
       <div className={s.promoBlock}>
         <Promo />
       </div>
-
       <div className={s.ratingBlock}>
         <Rating />
       </div>
