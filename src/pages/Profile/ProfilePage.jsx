@@ -17,7 +17,7 @@ function ProfilePage() {
           {links.map((link) => (
             <AppLink
               className={s.item}
-              activeClassActive={s.itemActive}
+              activeClass={s.itemActive}
               to={link.to}
               key={link.to}
             >

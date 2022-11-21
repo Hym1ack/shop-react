@@ -7,7 +7,7 @@ function CatalogLinks({ catalog }) {
   const links = items.map((link) => (
     <AppLink
       className={s.link}
-      activeClassActive={s.linkActive}
+      activeClass={s.linkActive}
       to={link.to}
       key={link.to}
     >

@@ -10,11 +10,7 @@ function Navigation() {
       <Slider type="links" className={s.navSlider}>
         {navigationLinks.map((link) => (
           <SwiperSlide className={s.slide} key={link.to}>
-            <AppLink
-              className={s.item}
-              activeClassActive={s.itemActive}
-              to={link.to}
-            >
+            <AppLink className={s.item} activeClass={s.itemActive} to={link.to}>
               <img src={link.image} alt="%" />
               <span className={s.itemText}>{link.label}</span>
             </AppLink>

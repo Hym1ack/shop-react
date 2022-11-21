@@ -38,8 +38,10 @@
 }
 
 
-.itemActive {
+.item:hover, .itemActive {
     background: #FFE8BC;
+
+    transition: .3s;
 }
 
 @media screen and (max-width: 768px) {
