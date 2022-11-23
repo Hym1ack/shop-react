@@ -12,7 +12,7 @@ function Cart() {
     if (quantity === 1) return ending[0];
     if (quantity > 1 && quantity < 5) return ending[1];
 
-    return `${quantity} ${ending[2]}`;
+    return ending[2];
   };
 
   return (
@@ -25,7 +25,7 @@ function Cart() {
           {`${totalAmount} ₽`}
           <br />
           <span className={s.cartQuantity}>
-            {calcQuantityEnding(totalQuantity)}
+            {`${totalQuantity} ${calcQuantityEnding(totalQuantity)}`}
           </span>
         </p>
       )}
