@@ -1,5 +1,7 @@
 .cart {
     display: flex;
+    justify-content: space-between;
+    gap: 20px;
     margin-bottom: 164px;
 }
 
@@ -7,3 +9,10 @@
     margin-bottom: 77px;
 }
 
+.nothing {
+    margin: 0 auto;
+
+    font-size: 32px;
+    line-height: 44px;
+
+}

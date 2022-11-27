@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import s from "./Basket.module.css";
 import saleIcon from "../../assets/images/cart/saleIcon.svg";
 import deleteIcon from "../../assets/images/cart/deleteItem.svg";
@@ -6,10 +5,7 @@ import timeIcon from "../../assets/images/cart/time.svg";
 import { addItem, clearCart, removeItem } from "../../redux/cartSlice";
 import Favourite from "../UiKit/Favourite";
 
-function Basket() {
-  const cartProducts = useSelector((state) => state.cart.cartItems);
-  const dispatch = useDispatch();
-
+function Basket({ cartProducts, dispatch }) {
   const nightTime = new Date().getHours() >= 22 || new Date().getHours() <= 7;
 
   const cartElements = cartProducts.map((product) => (

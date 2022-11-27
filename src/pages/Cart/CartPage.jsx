@@ -3,7 +3,7 @@ import { SwiperSlide } from "swiper/react";
 import { useEffect } from "react";
 import s from "./CartPage.module.css";
 import Basket from "../../components/Basket/Basket";
-import Delivery from "../../components/Basket/Delivery";
+import Delivery from "../../components/Delivery/Delivery";
 import Slider from "../../components/Slider/Slider";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import {
@@ -12,8 +12,9 @@ import {
 } from "../../redux/shopSlice";
 
 function CartPage() {
-  const elements = useSelector((state) => state.shop.recommendedProducts);
   const dispatch = useDispatch();
+  const { recommendedProducts } = useSelector((state) => state.shop);
+  const cartProducts = useSelector((state) => state.cart.cartItems);
 
   useEffect(() => {
     dispatch(fetchRecommendedProducts());
@@ -24,11 +25,17 @@ function CartPage() {
   return (
     <>
       <div className={s.cart}>
-        <Basket />
-        <Delivery />
+        {cartProducts.length !== 0 ? (
+          <>
+            <Basket cartProducts={cartProducts} dispatch={dispatch} />
+            <Delivery />
+          </>
+        ) : (
+          <p className={s.nothing}>В корзине нет товаров</p>
+        )}
       </div>
       <Slider title="Рекомендации для вас" type="items" titleStyle={s.slider}>
-        {elements.map((product) => (
+        {recommendedProducts.map((product) => (
           <SwiperSlide key={product.id}>
             <ProductCard product={product} />
           </SwiperSlide>
