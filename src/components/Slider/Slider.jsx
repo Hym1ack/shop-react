@@ -186,12 +186,10 @@ function Slider({
         className="carouselItemsSlider"
         spaceBetween={27}
         loop
-        navigation={
-          isMobile && {
-            nextEl: `.carousel-recommendation-next`,
-            prevEl: `.carousel-recommendation-prev`,
-          }
-        }
+        navigation={{
+          nextEl: `.carousel-recommendation-next`,
+          prevEl: `.carousel-recommendation-prev`,
+        }}
         breakpoints={{
           320: {
             slidesPerGroup: 2,
