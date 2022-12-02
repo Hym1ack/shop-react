@@ -1,0 +1,179 @@
+
+.subTitle {
+    display: inline-block;
+
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.field {
+    margin-top: 18px;
+    margin-bottom: 9px;
+}
+
+.field + .field {
+    margin-top: 21px;
+}
+
+.input {
+    width: 190px;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.changeInput {
+    margin-left: 59px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FF0000;
+    cursor: pointer;
+}
+
+.card {
+    font-size: 18px;
+    line-height: 25px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.error {
+    margin: 10px 0;
+    color: #CF0000;
+}
+
+/*payment*/
+
+.payMethod {
+    margin-top: 47px;
+
+}
+
+.methods {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox {
+    margin-bottom: 35px;
+    padding-left: 40px;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.checkbox:before {
+    width: 19px;
+    height: 19px;
+
+    top: 3px;
+
+    background: #FFF8EB;
+    border: 1px solid rgba(255, 169, 0, 0.45);
+    border-radius: 16px;
+}
+
+.checkbox:after {
+    width: 9px;
+    height: 9px;
+
+    top: 8px;
+    left: 5px;
+
+    background: #FF0000;
+    border-radius: 13px;
+}
+
+/*delivery*/
+
+.delivery {
+    max-width: 657px;
+    width: 100%;
+}
+
+.orderTime {
+    margin-bottom: 23px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.changeTime {
+    height: 18px;
+    margin-top: 3px;
+    margin-left: 22px;
+
+    font-size: 14px;
+    line-height: 19px;
+    color: #FF0000;
+    cursor: pointer;
+}
+
+.userAddress {
+    margin-bottom: 30px;
+
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.address {
+    display: flex;
+    gap: 20px;
+}
+
+.addressField {
+    width: 150px;
+    padding: 25px;
+
+    background: #FFF8EB;
+    border: 1px solid rgba(255, 169, 0, 0.45);
+    border-radius: 16px;
+
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.warningField {
+    border: 1px solid red;
+    animation: bounce .3s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateX(0px);
+    }
+    37% {
+        transform: translateX(5px);
+    }
+    82% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.addressField::-webkit-outer-spin-button,
+.addressField::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.addressTextarea {
+    resize: none;
+    margin-top: 19px;
+    padding: 12px 25px;
+    width: 100%;
+    height: 164px;
+
+    background: #FFF8EB;
+    border: 1px solid rgba(255, 169, 0, 0.45);
+    border-radius: 16px;
+
+    font-size: 20px;
+    line-height: 27px;
+    color: rgba(0, 0, 0, 0.5);
+}
