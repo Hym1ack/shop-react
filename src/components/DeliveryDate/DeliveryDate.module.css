@@ -1,0 +1,28 @@
+.date {
+    margin-bottom: 11px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.time {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.changeTime {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FF0000;
+}
+
+.address {
+    margin-bottom: 22px;
+    width: 350px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+}
