@@ -1,0 +1,72 @@
+.delivery {
+    padding: 24px 32px 27px 33px;
+    max-width: 417px;
+    width: 100%;
+    max-height: 630px;
+    background: #FFECCA;
+    border: 1px solid #FFE7B9;
+    border-radius: 16px;
+}
+
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.infoText {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.infoSale {
+    color: #FF0000;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.infoPay {
+    margin-top: 23px;
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.finalPrice {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 35px;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 13px;
+
+    background: #FF0000;
+    border: 2px solid #FF0000;
+    border-radius: 31px;
+
+    font-weight: 600;
+    font-size: 22px;
+    color: #FFFFFF;
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+.submitBtn:hover {
+    background: #D90000;
+}
+
+.awardBonuses {
+    margin-top: 10px;
+
+    text-align: center;
+    font-size: 14px;
+}
