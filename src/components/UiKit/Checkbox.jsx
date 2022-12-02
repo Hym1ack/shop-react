@@ -1,11 +1,24 @@
 import s from "./Checkbox.module.css";
 
-function Checkbox({ checked, onChange, children, labelClass, id }) {
+function Checkbox({
+  isRadio = false,
+  checked,
+  disabled = false,
+  onChange,
+  children,
+  labelClass,
+  id,
+  value,
+  name,
+}) {
   return (
     <>
       <input
-        type="checkbox"
+        disabled={disabled}
+        type={isRadio ? "radio" : "checkbox"}
         id={id}
+        name={name}
+        value={value}
         className={s.checkbox}
         checked={checked}
         onChange={onChange}
