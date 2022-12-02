@@ -15,6 +15,7 @@ import ProfileSettings from "./components/ProfileSettings/ProfileSettings";
 import ProfileHistory from "./components/ProfileHistory/ProfileHistory";
 import ProfileFavourite from "./components/ProfileFavourite/ProfileFavourite";
 import Home from "./pages/Home/Home";
+import CheckoutPage from "./pages/Checkout/CheckoutPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
         </Route>
         <Route path="product/:id" element={<ProductPage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
         <Route
           path="profile/*"
           element={
