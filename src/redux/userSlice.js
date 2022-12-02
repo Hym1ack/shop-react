@@ -1,5 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  getDoc,
+  setDoc,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { firestoreDatabase } from "../firebase";
 
 const initialState = {
@@ -8,6 +15,16 @@ const initialState = {
   phoneNumber: null,
   birthdayDate: null,
   email: null,
+  bonuses: null,
+  bonusCard: null,
+  address: {
+    city: null,
+    street: null,
+    apartment: null,
+    floor: null,
+    intercom: null,
+    entrance: null,
+  },
   orders: [],
   favoritesProductsId: [],
 };
@@ -21,6 +38,16 @@ const createUserDatabase = async (userName, userId, email) => {
     phoneNumber: null,
     birthdayDate: null,
     email,
+    bonuses: null,
+    bonusCard: null,
+    address: {
+      city: null,
+      street: null,
+      apartment: null,
+      floor: null,
+      intercom: null,
+      entrance: null,
+    },
     orders: [],
     favoritesProductsId: [],
   };
@@ -30,12 +57,61 @@ const createUserDatabase = async (userName, userId, email) => {
   return newUser;
 };
 
-const addToFavorites = async (userId, products) => {
+const saveOrderToUser = async (userId, orderId) => {
   const data = await doc(firestoreDatabase, "users", userId);
 
   await updateDoc(data, {
-    favoritesProductsId: products,
+    orders: arrayUnion(orderId),
   });
+};
+
+export const newOrder = createAsyncThunk(
+  "user/newOrder",
+  async ({ userId, order }, { getState }) => {
+    const orderId = Timestamp.now().seconds;
+    const { cart } = getState();
+
+    const {
+      cartItems,
+      totalAmount,
+      totalDiscount,
+      totalQuantity,
+      totalWeight,
+    } = cart;
+
+    const cartIds = cartItems.map((item) => item.id);
+
+    const newObj = {
+      userId,
+      cart: {
+        totalAmount,
+        totalDiscount,
+        totalQuantity,
+        totalWeight,
+        cartIds,
+      },
+      order,
+    };
+
+    const ref = doc(firestoreDatabase, "orders", `${orderId}`);
+
+    await setDoc(ref, newObj);
+    await saveOrderToUser(userId, orderId);
+  }
+);
+
+const addToFavorites = async (userId, products) => {
+  try {
+    const data = await doc(firestoreDatabase, "users", userId);
+
+    await updateDoc(data, {
+      favoritesProductsId: products,
+    });
+
+    return true;
+  } catch (error) {
+    return false;
+  }
 };
 
 export const fetchUserById = createAsyncThunk(
@@ -67,12 +143,24 @@ export const cartSlice = createSlice({
 
       addToFavorites(state.userId, [...state.favoritesProductsId]);
     },
+    useBonuses(state, action) {
+      state.bonuses -= action.payload;
+    },
     logout(state) {
       state.userName = null;
       state.userId = null;
       state.phoneNumber = null;
       state.birthdayDate = null;
       state.email = null;
+      state.bonuses = null;
+      state.address = {
+        city: null,
+        street: null,
+        apartment: null,
+        floor: null,
+        intercom: null,
+        entrance: null,
+      };
       state.orders = [];
       state.favoritesProductsId = [];
     },
@@ -85,6 +173,8 @@ export const cartSlice = createSlice({
         phoneNumber,
         birthdayDate,
         email,
+        bonuses,
+        address,
         orders,
         favoritesProductsId,
       } = action.payload;
@@ -94,11 +184,13 @@ export const cartSlice = createSlice({
       state.phoneNumber = phoneNumber;
       state.birthdayDate = birthdayDate;
       state.email = email;
+      state.bonuses = bonuses;
+      state.address = address;
       state.orders = orders;
       state.favoritesProductsId = favoritesProductsId;
     },
   },
 });
 
-export const { logout, toggleFavourite } = cartSlice.actions;
+export const { logout, toggleFavourite, useBonuses } = cartSlice.actions;
 export default cartSlice.reducer;
