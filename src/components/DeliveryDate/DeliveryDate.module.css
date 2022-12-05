@@ -21,8 +21,29 @@
 
 .address {
     margin-bottom: 22px;
-    width: 350px;
+
+    max-width: 350px;
+    min-width: 294px;
+    width: 100%;
+
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
 }
+
+@media screen and (max-width: 768px) {
+
+    .date {
+        margin-bottom: 20px;
+    }
+
+    .time {
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .address {
+        margin-bottom: 19px;
+    }
+}
+

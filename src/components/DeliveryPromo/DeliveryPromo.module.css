@@ -65,3 +65,9 @@
 .available span {
     color: #FF0000;
 }
+
+@media screen and (max-width: 768px) {
+    .applyBtn {
+        padding: 11px 10px 12px 10px;
+    }
+}

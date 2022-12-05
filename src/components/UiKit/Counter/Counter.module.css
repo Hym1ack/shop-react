@@ -1,0 +1,39 @@
+
+.countItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    height: 42px;
+    width: 109px;
+    padding: 10px 16px 10px 18px;
+
+    background: #FFF8EB;
+    border: 1px solid #FFE7B9;
+    border-radius: 58px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFA900;
+}
+
+.countItems span {
+    user-select: none;
+}
+
+.deleteItem img {
+    width: 10px;
+    height: 12px;
+}
+
+.removeItem,
+.addItem {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFA900;
+}

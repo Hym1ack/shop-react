@@ -34,13 +34,20 @@ function CartPage() {
           <p className={s.nothing}>В корзине нет товаров</p>
         )}
       </div>
-      <Slider title="Рекомендации для вас" type="items" titleStyle={s.slider}>
-        {recommendedProducts.map((product) => (
-          <SwiperSlide key={product.id}>
-            <ProductCard product={product} />
-          </SwiperSlide>
-        ))}
-      </Slider>
+      <div className={s.slider}>
+        <Slider
+          title="Вам может быть это интересно"
+          type="items"
+          titleStyle={s.sliderTitle}
+          paginationClass="productsPagination"
+        >
+          {recommendedProducts.map((product) => (
+            <SwiperSlide key={product.id}>
+              <ProductCard product={product} />
+            </SwiperSlide>
+          ))}
+        </Slider>
+      </div>
     </>
   );
 }
