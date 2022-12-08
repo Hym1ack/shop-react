@@ -60,14 +60,9 @@ function CheckoutForm({ bindSubmitForm }) {
         bindSubmitForm(submitForm);
 
         return (
-          <>
+          <div className={s.form}>
             <div>
               <h6 className={s.subTitle}>Ваши данные</h6>
-              <ErrorMessage
-                component="span"
-                className={s.error}
-                name="userName"
-              />
               <fieldset className={s.field}>
                 <Field
                   className={s.input}
@@ -85,12 +80,13 @@ function CheckoutForm({ bindSubmitForm }) {
                 >
                   Изменить получателя
                 </button>
+                <ErrorMessage
+                  component="span"
+                  className={s.error}
+                  name="userName"
+                />
               </fieldset>
-              <ErrorMessage
-                component="span"
-                className={s.error}
-                name="userPhone"
-              />
+
               <fieldset className={s.field}>
                 <Field
                   className={s.input}
@@ -109,6 +105,11 @@ function CheckoutForm({ bindSubmitForm }) {
                 >
                   Изменить контактный номер для заказа
                 </button>
+                <ErrorMessage
+                  component="span"
+                  className={s.error}
+                  name="userPhone"
+                />
               </fieldset>
               <p className={s.card}>
                 К этому номеру телефона привязана карта №a437503
@@ -215,7 +216,7 @@ function CheckoutForm({ bindSubmitForm }) {
                 placeholder="Комментарий для курьера"
               />
             </div>
-          </>
+          </div>
         );
       }}
     </Formik>

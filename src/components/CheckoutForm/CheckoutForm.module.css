@@ -1,3 +1,7 @@
+.form {
+    max-width: 657px;
+    width: 100%;
+}
 
 .subTitle {
     display: inline-block;
@@ -17,12 +21,14 @@
 }
 
 .input {
-    width: 190px;
+    width: 165px;
     font-size: 20px;
     line-height: 27px;
 }
 
 .changeInput {
+
+    /*margin-left: clamp(10px, 5%, 59px);*/
     margin-left: 59px;
 
     font-weight: 400;
@@ -39,6 +45,7 @@
 }
 
 .error {
+    display: block;
     margin: 10px 0;
     color: #CF0000;
 }
@@ -120,13 +127,14 @@
 }
 
 .address {
-    display: flex;
+    display: inline-flex;
     gap: 20px;
 }
 
 .addressField {
-    width: 150px;
-    padding: 25px;
+    max-width: 150px;
+    width: 100%;
+    padding: 25px 25px 25px 20px;
 
     background: #FFF8EB;
     border: 1px solid rgba(255, 169, 0, 0.45);
@@ -176,4 +184,96 @@
     font-size: 20px;
     line-height: 27px;
     color: rgba(0, 0, 0, 0.5);
+}
+
+
+@media screen and (max-width: 1040px) {
+    .addressTextarea::placeholder,
+    .addressField::placeholder {
+        font-size: 16px;
+    }
+
+    .addressField {
+        padding: 25px 25px 25px 15px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .checkbox {
+        margin-bottom: 20px;
+    }
+
+    .payMethod {
+        margin-top: 18px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .error {
+        font-size: 14px;
+    }
+
+    .card {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .payMethod {
+        margin-top: 18px;
+    }
+}
+
+
+@media screen and (max-width: 520px) {
+
+    .subTitle {
+        font-size: 20px;
+        line-height: 27px;
+    }
+
+    .userAddress,
+    .input {
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .error {
+        font-size: 12px;
+    }
+
+    .orderTime {
+        display: block;
+    }
+
+    .changeTime,
+    .changeInput {
+        display: block;
+        margin-left: 0;
+
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .card {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .checkbox {
+        padding-left: 30px;
+
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .address {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .addressField {
+        max-width: 45%;
+    }
 }

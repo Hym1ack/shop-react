@@ -29,3 +29,28 @@
     bottom: 12px;
     right: 9px;
 }
+
+@media screen and (max-width: 1030px) {
+    .text:nth-child(3) {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+    .text {
+        font-size: 16px;
+    }
+
+    .text:nth-child(3) {
+        width: 85%;
+    }
+
+    .text:last-child {
+        width: 100%;
+    }
+
+    .flag {
+        bottom: 86px;
+    }
+}
