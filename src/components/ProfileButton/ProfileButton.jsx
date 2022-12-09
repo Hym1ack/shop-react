@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { useNavigate } from "react-router-dom";
 import s from "./ProfileButton.module.css";
 import LoginModal from "../ProfileLogin/LoginModal";
 import { useAuth } from "../../hooks/useAuth";
 import UserModal from "../UserModal/UserModal";
-import { ReactComponent as UserIcon } from "../../assets/images/header/userIcon.svg";
 
-function ProfileButton() {
+function ProfileButton({ children }) {
   const { isAuth, userName } = useAuth();
+  const navigate = useNavigate();
 
   const [authFormHover, setAuthFormHover] = useState(false);
 
   return (
     <div
+      role="button"
+      tabIndex={0}
       className={s.auth}
+      onClick={() => navigate("/profile")}
+      onKeyDown={() => navigate("/profile")}
       onMouseEnter={() => setAuthFormHover(true)}
       onMouseLeave={() => setAuthFormHover(false)}
     >
-      <UserIcon className={s.btnImg} />
+      {children}
       <CSSTransition
         in={authFormHover}
         timeout={300}

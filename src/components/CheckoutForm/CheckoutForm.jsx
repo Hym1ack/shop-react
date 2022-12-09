@@ -12,7 +12,7 @@ import { validationCheckout } from "../../utils/validationCheckout";
 import { clearCart } from "../../redux/cartSlice";
 import DeliveryModal from "../DeliveryModal/DeliveryModal";
 
-function CheckoutForm({ bindSubmitForm }) {
+function CheckoutForm({ bindSubmitForm, setOrderSuccess, orderId }) {
   const dispatch = useDispatch();
   const { isAuth, userId, userName, phoneNumber } = useAuth();
 
@@ -43,7 +43,8 @@ function CheckoutForm({ bindSubmitForm }) {
       validateOnChange
       validationSchema={validationCheckout}
       onSubmit={(order, { setSubmitting }) => {
-        dispatch(newOrder({ userId, order }));
+        dispatch(newOrder({ userId, order, orderId }));
+        setOrderSuccess(true);
         dispatch(clearCart());
 
         setSubmitting(false);

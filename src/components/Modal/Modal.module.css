@@ -33,6 +33,8 @@
 
 
 .modal {
+    margin: 20px;
+
     position: relative;
 
     background-color: #fff;

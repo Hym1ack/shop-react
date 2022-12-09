@@ -1,15 +1,24 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
+import { Timestamp } from "firebase/firestore";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import DeliveryWarning from "../../components/DeliveryWarning/DeliveryWarning";
 import Delivery from "../../components/Delivery/Delivery";
 import s from "./CheckoutPage.module.css";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
+import NewOrderModal from "../../components/NewOrderModal/NewOrderModal";
 
 function CheckoutPage() {
   const formRef = useRef(null);
+  const cartProducts = useSelector((state) => state.cart.cartItems);
+
+  const [orderSuccess, setOrderSuccess] = useState(false);
+  const [orderId, setOrderId] = useState(null);
 
   const handleSubmitForm = (e) => {
     if (formRef.current) {
       formRef.current(e);
+      setOrderId(Timestamp.now().seconds);
     }
   };
 
@@ -17,11 +26,19 @@ function CheckoutPage() {
     formRef.current = submitForm;
   }, []);
 
+  if (!orderSuccess && cartProducts.length === 0) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div className={s.checkout}>
       <div>
         <h4 className={s.title}>Оформление заказа</h4>
-        <CheckoutForm bindSubmitForm={bindSubmitForm} />
+        <CheckoutForm
+          bindSubmitForm={bindSubmitForm}
+          setOrderSuccess={setOrderSuccess}
+          orderId={orderId}
+        />
       </div>
       <div>
         <Delivery
@@ -31,6 +48,13 @@ function CheckoutPage() {
         />
         <DeliveryWarning />
       </div>
+      {orderSuccess && (
+        <NewOrderModal
+          orderId={orderId}
+          orderSuccess={orderSuccess}
+          closeModal={setOrderSuccess}
+        />
+      )}
     </div>
   );
 }

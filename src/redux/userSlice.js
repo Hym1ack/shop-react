@@ -1,12 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  arrayUnion,
-  doc,
-  getDoc,
-  setDoc,
-  Timestamp,
-  updateDoc,
-} from "firebase/firestore";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { firestoreDatabase } from "../firebase";
 
 const initialState = {
@@ -67,8 +60,7 @@ const saveOrderToUser = async (userId, orderId) => {
 
 export const newOrder = createAsyncThunk(
   "user/newOrder",
-  async ({ userId, order }, { getState }) => {
-    const orderId = Timestamp.now().seconds;
+  async ({ userId, order, orderId }, { getState }) => {
     const { cart } = getState();
 
     const {
