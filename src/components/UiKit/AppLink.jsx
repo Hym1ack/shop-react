@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function AppLink({ children, className, activeClass, to }) {
+function AppLink({ children, className, activeClass = "", to }) {
   const setActive = ({ isActive }) =>
     isActive ? `${className} ${activeClass}` : className;
 

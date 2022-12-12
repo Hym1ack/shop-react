@@ -3,12 +3,13 @@ import { useMediaQuery } from "react-responsive";
 import s from "./Header.module.css";
 import { ReactComponent as AppLogo } from "../../assets/images/header/logo.svg";
 import Navigation from "../../components/Navigation/Navigation";
-import ProfileButton from "../../components/Profile/ProfileButton";
+import ProfileButton from "../../components/ProfileButton/ProfileButton";
 import AppLink from "../../components/UiKit/AppLink";
 import { ReactComponent as FavouriteLogo } from "../../assets/images/header/favourites.svg";
 import Search from "../../components/Search/Search";
 import Cart from "../../components/Cart/Cart";
 import Container from "../../components/UiKit/Container";
+import { ReactComponent as UserIcon } from "../../assets/images/header/userIcon.svg";
 
 function Header() {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
@@ -26,7 +27,9 @@ function Header() {
               <AppLink to="profile/favourites">
                 <FavouriteLogo className={s.btnImg} />
               </AppLink>
-              <ProfileButton />
+              <ProfileButton>
+                <UserIcon className={s.btnImg} />
+              </ProfileButton>
               <Cart />
             </div>
           )}
