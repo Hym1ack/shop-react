@@ -15,6 +15,7 @@ function ProductCart({ product }) {
     totalPrice,
     quantity,
   } = product;
+
   const isMobile = useMediaQuery({ maxWidth: 991 });
 
   return (

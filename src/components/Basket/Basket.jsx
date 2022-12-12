@@ -4,8 +4,8 @@ import { clearCart } from "../../redux/cartSlice";
 import ProductCart from "../ProductCart/ProductCart";
 
 function Basket({ cartProducts, dispatch }) {
-  // const nightTime = new Date().getHours() >= 22 || new Date().getHours() <= 7;
-  const nightTime = true;
+  const nightTime = new Date().getHours() >= 22 || new Date().getHours() <= 7;
+
   return (
     <div className={s.containerCart}>
       <div className={s.cartTop}>
