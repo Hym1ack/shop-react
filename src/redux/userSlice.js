@@ -1,5 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { firestoreDatabase } from "../firebase";
 
 const initialState = {
@@ -18,7 +28,7 @@ const initialState = {
     intercom: null,
     entrance: null,
   },
-  orders: [],
+  ordersId: [],
   favoritesProductsId: [],
 };
 
@@ -41,7 +51,7 @@ const createUserDatabase = async (userName, userId, email) => {
       intercom: null,
       entrance: null,
     },
-    orders: [],
+    ordersId: [],
     favoritesProductsId: [],
   };
 
@@ -54,8 +64,22 @@ const saveOrderToUser = async (userId, orderId) => {
   const data = await doc(firestoreDatabase, "users", userId);
 
   await updateDoc(data, {
-    orders: arrayUnion(orderId),
+    ordersId: arrayUnion(orderId),
   });
+};
+
+const addToFavorites = async (userId, products) => {
+  try {
+    const data = await doc(firestoreDatabase, "users", userId);
+
+    await updateDoc(data, {
+      favoritesProductsId: products,
+    });
+
+    return true;
+  } catch (error) {
+    return false;
+  }
 };
 
 export const newOrder = createAsyncThunk(
@@ -83,6 +107,8 @@ export const newOrder = createAsyncThunk(
         cartIds,
       },
       order,
+      date: orderId,
+      inWork: true,
     };
 
     const ref = doc(firestoreDatabase, "orders", `${orderId}`);
@@ -92,19 +118,26 @@ export const newOrder = createAsyncThunk(
   }
 );
 
-const addToFavorites = async (userId, products) => {
-  try {
-    const data = await doc(firestoreDatabase, "users", userId);
+export const fetchOrders = createAsyncThunk(
+  "shop/fetchOrders",
+  async (_, { getState }) => {
+    const {
+      user: { userId },
+    } = getState();
 
-    await updateDoc(data, {
-      favoritesProductsId: products,
+    const docRef = collection(firestoreDatabase, "orders");
+
+    const q = await query(docRef, where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+
+    const orders = [];
+    querySnapshot.forEach((docSnap) => {
+      orders.push(docSnap.data());
     });
 
-    return true;
-  } catch (error) {
-    return false;
+    return orders;
   }
-};
+);
 
 export const fetchUserById = createAsyncThunk(
   "user/fetchUserById",
@@ -153,7 +186,7 @@ export const cartSlice = createSlice({
         intercom: null,
         entrance: null,
       };
-      state.orders = [];
+      state.ordersId = [];
       state.favoritesProductsId = [];
     },
   },
@@ -167,7 +200,7 @@ export const cartSlice = createSlice({
         email,
         bonuses,
         address,
-        orders,
+        ordersId,
         favoritesProductsId,
       } = action.payload;
 
@@ -178,8 +211,11 @@ export const cartSlice = createSlice({
       state.email = email;
       state.bonuses = bonuses;
       state.address = address;
-      state.orders = orders;
+      state.ordersId = ordersId;
       state.favoritesProductsId = favoritesProductsId;
+    },
+    [fetchOrders.fulfilled]: (state, action) => {
+      state.orders = action.payload;
     },
   },
 });

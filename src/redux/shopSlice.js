@@ -78,6 +78,24 @@ export const fetchProductById = createAsyncThunk(
   }
 );
 
+export const fetchProductsById = createAsyncThunk(
+  "shop/fetchProductsById",
+  async (id) => {
+    const products = [];
+    const docRef = collection(firestoreDatabase, "products");
+
+    const q = await query(docRef, where("id", "in", id));
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+
+    return products;
+  }
+);
+
 export const fetchFavouritesProducts = createAsyncThunk(
   "shop/fetchFavouritesProducts",
   async (idProducts) => {
@@ -177,6 +195,9 @@ export const shopSlice = createSlice({
     },
     [fetchProductsByName.fulfilled]: (state, action) => {
       state.searchedProducts = action.payload;
+    },
+    [fetchProductsById.fulfilled]: (state, action) => {
+      state.productsHistory = action.payload;
     },
   },
 });

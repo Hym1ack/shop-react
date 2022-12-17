@@ -30,6 +30,7 @@ function CheckoutForm({ bindSubmitForm, setOrderSuccess, orderId }) {
         userName: userName || "",
         userPhone: phoneNumber || "",
         payMethod: "",
+        deliveryMethod: "delivery",
         address: {
           street: "ул. Новая,Ильинское-Усово, городской округ Красногорск",
           apartment: "",
@@ -225,33 +226,3 @@ function CheckoutForm({ bindSubmitForm, setOrderSuccess, orderId }) {
 }
 
 export default CheckoutForm;
-
-/*
-<Checkbox
-                  id="cardOnReceipt"
-                  isRadio
-                  name="payMethod"
-                  value="cardOnReceipt"
-                  labelClass={s.checkbox}
-                >
-                  Оплата картой при получении
-                </Checkbox>
-                <Checkbox
-                  id="cashOnDelivery"
-                  isRadio
-                  name="payMethod"
-                  value="cashOnDelivery"
-                  labelClass={s.checkbox}
-                >
-                  Оплата наличными при получении
-                </Checkbox>
-                <Checkbox
-                  id="onlinePay"
-                  isRadio
-                  name="payMethod"
-                  value="onlinePay"
-                  labelClass={s.checkbox}
-                >
-                  Онлайн оплата
-                </Checkbox>
- */
