@@ -28,7 +28,9 @@ function Header() {
                 <FavouriteLogo className={s.btnImg} />
               </AppLink>
               <ProfileButton>
-                <UserIcon className={s.btnImg} />
+                <AppLink to="profile">
+                  <UserIcon className={s.btnImg} />
+                </AppLink>
               </ProfileButton>
               <Cart />
             </div>
